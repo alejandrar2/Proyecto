@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-          <div style="background-image: url(img/log.jpg);background-position: center center ; background-repeat: no-repeat ; background-size:cover;;" class=" col-8">            
-           
-          </div>
-          <div class="col-4">
-            <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
-              </form>
-           
-          </div>
-    
+
+  <div style="margin-right:8px ;" class="row">
+    <div
+      style="background-image: url(img/log.jpg);background-position: center center ; background-repeat: no-repeat ; background-size:cover; height: 657px;"
+      class=" col-8 md-4 sm-2">
+
+    </div>
+    <div style="padding-top: 50px;" class="col-4 md-2 ">
+
+      <div class="login-box">
+        <h1>Login</h1>
+        <div class="textbox">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username">
+        </div>
+      
+        <div class="textbox">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div  style="color: #2ecece;" class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+      
+        <input type="button" class="btn" value="Sign in">
+      </div>
+      </div>
+      </form>
+
+    </div>
+
 </body>
+
 </html>
