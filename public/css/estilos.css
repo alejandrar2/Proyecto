@@ -19,16 +19,12 @@
 
 .rawr{
     padding-top: 2px;
-    padding-bottom: 15px;
+ 
     padding-left: 45px;
 
 }
 
-body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #5a5a5a;
-}
+
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -47,7 +43,7 @@ body {
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
-  background-color: #777;
+  
 }
 .carousel-item > img {
   position: absolute;
@@ -129,11 +125,6 @@ body {
  * Base structure
  */
 
-html,
-body {
-  height: 100%;
-  background-color: #333;
-}
 
 body {
   display: -ms-flexbox;
