@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor() { }
+  constructor( private servicioUsuario: UsuarioService ) { }
+
+  usuarios:any;
 
   ngOnInit(): void {
+
+    this.obtenerUsuarios();
+
   }
+
+  obtenerUsuarios(){
+
+    this.servicioUsuario.obtenerUsuarios().subscribe( ( res:any )=>{
+      console.log(res);
+      this.usuarios = res.datos;
+    });
+
+  }
+
+  eliminarUsuario(idUsuario){
+    console.log(idUsuario);
+
+    this.servicioUsuario.eliminarUsuario(idUsuario).subscribe( (res:any) => {
+
+      console.log(res);
+
+      if(res.Ok){
+        this.obtenerUsuarios();
+      }
+
+    } );
+
+  }
+
 
 }

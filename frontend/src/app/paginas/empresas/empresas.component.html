@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Empresa</th>
+            <th scope="col">Rubro</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Productos</th>
+            <th scope="col">Paginas</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of empresas; index as i" >
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.rubro }}</td>
+            <td>{{ user.correo }}</td>
+            <td>{{ user.productos.length }}</td>
+            <td>{{ user.paginas.length }}</td>
+            <td> <button class="btn btn-sm btn-danger" (click)=" eliminarCliente( user._id  ) " > Eliminar </button> </td>
+        </tr>
+    </tbody>
+</table>
+

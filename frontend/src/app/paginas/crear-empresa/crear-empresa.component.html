@@ -1,0 +1,23 @@
+<div style="margin-right:8px ;" class=" animate__bounce row">
+    <div
+      style="background-image: url(img/log.jpg);background-position: center center ; background-repeat: no-repeat ; background-size:cover; height: 657px;"
+      class=" col-8 md-4 sm-2">
+
+    </div>
+    <div style="background-color: #24303C;" class="col-4 md-2 ">
+        <section style="margin-top: 0px;" class="form-register">
+          <img style="width: 229px; height: 123px; padding-left: 64px;" src="img/logo.png">
+            <h4>Registrarse</h4>
+            <input class="controls" type="text" name="nombres" [(ngModel)]="empresa.nombre" placeholder="Nombre de la Empresa">
+            <input class="controls" type="text" name="rubro" [(ngModel)]="empresa.rubro" placeholder="Rubro de la empresa">
+            <input class="controls" type="email" name="correo" [(ngModel)]="empresa.correo" placeholder="Correo de la Empresa">
+            <input class="controls" type="password" name="contrasenia" [(ngModel)]="empresa.contrasenia" placeholder="Ingrese su Contraseña">
+            <label>
+                <input type="checkbox" value="remember-me"> De acuerdo con los terminos y condiciones
+              </label>
+            <input class="botons" (click)="crearEmpresa()"  type="button" value="Registrar">
+            <p><a href="#">¿Ya tengo Cuenta?</a></p>
+          </section>
+
+     
+    </div>
