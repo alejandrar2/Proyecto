@@ -7,14 +7,18 @@
         <section style="margin-top: 0px;" class="form-register">
             <img style="width: 229px; height: 123px; padding-left: 64px;" src="../../../assets/img/logo.png">
             <h4>Registrarse</h4>
-            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre">
-            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido">
-            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-            <input class="controls" type="password" name="correo" id="correo" placeholder="Ingrese su Contraseña">
+            <input class="controls" type="text" name="nombre" [(ngModel)]="cliente.nombre"
+                placeholder="Ingrese su Nombre">
+            <input class="controls" type="text" name="apellido" [(ngModel)]="cliente.apellido"
+                placeholder="Ingrese su Apellido">
+            <input class="controls" type="email" name="correo" [(ngModel)]="cliente.correo"
+                placeholder="Ingrese su Correo">
+            <input class="controls" type="password" name="contrasenia" [(ngModel)]="cliente.contrasenia"
+                placeholder="Ingrese su Contraseña">
             <label>
                 <input type="checkbox" value="remember-me"> De acuerdo con los terminos y condiciones
             </label>
-            <input class="botons" type="submit" value="Registrar">
+            <input class="botons" type="button" (click)="crearCliente()" value="Registrar">
             <p><a href="#">¿Ya tengo Cuenta?</a></p>
         </section>
     </div>
