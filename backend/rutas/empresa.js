@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Modelo = require('../modelos/empresa.model')
+var Modelo = require('../modelos/empresa.model');
+var mongoose = require("mongoose")
 
 // Obtener
 router.get('/', (req, res) => {
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 // Obtener uno
 router.get('/:id', (req, res) => {
 
-    Modelo.findOne( { _id: req.params.id }, {  })
+    Modelo.findOne({ _id: req.params.id }, {})
         .then(dato => {
             res.send(dato);
             res.end();
@@ -75,7 +76,74 @@ router.delete('/:id', (req, res) => {
 // Login Empresa
 router.post('/logEmpresa', (req, res) => {
 
-    Modelo.find({correo: req.body.correo , contrasenia: req.body.contrasenia}, {nombre:true, rubro: true, correo: true, productos: paginas, paginas: true})
+    Modelo.find({ correo: req.body.correo, contrasenia: req.body.contrasenia }, { nombre: true, rubro: true, correo: true, productos: paginas, paginas: true })
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Guardar productos
+router.post('/guardarProducto/:idEmpresa', (req, res) => {
+
+    Modelo.update({
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
+    },
+        {
+            $push: {
+                productos: {
+                    _id: mongoose.Types.ObjectId(),
+                    nombre: req.body.nombre,
+                    calificacion: req.body.calificacion,
+                    precio: req.body.precio,
+                    urlImagen: req.body.urlImagen
+
+
+
+                }
+            }
+        }
+
+
+    )
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Guardar Paginas
+router.post('/guardarPagina/:idEmpresa', (req, res) => {
+
+    Modelo.update({
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
+    },
+        {
+            $push: {
+                paginas: {
+                    _id: mongoose.Types.ObjectId(),
+                    titulo: req.body.titulo,
+                    descripcion: req.body.descripcion,
+                    palabrasClaves: req.body.palabrasClaves,
+                    navbar: req.body.navbar,
+                    footer: req.body.footer,
+                    paginaPrincipal: req.body.paginaPrincipal,
+                    urlImagen: req.body.urlImagen
+
+                }
+            }
+        }
+    )
         .then(datos => {
             res.send({ respuesta: true, datos });
             res.end();

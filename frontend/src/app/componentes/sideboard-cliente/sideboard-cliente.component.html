@@ -1,0 +1,33 @@
+<nav  style="background-color:#FFA500; height: 100%;" id="sidebar">
+    <div  class="p-4 pt-5">
+      <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);width: 162px; height: 126px; border-radius: 0px!important;">Logotipo</a>
+      <ul class="list-unstyled components mb-5">
+        <li class="">
+          <label for="">Nombre Empresa</label>
+        <li>
+          <a  [routerLink]="['/admin-company/productos']">Productos</a>
+        </li>
+        <li>
+          <a  [routerLink]="['/admin-company/sitios']">Paginas</a>
+        </li>
+        <li>
+          <a  [routerLink]="['/admin-company/categoria']">Categoria</a>
+        </li>
+        <li>
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Archivos</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+                <a [routerLink]="['/admin-company/galeria']">Galeria</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin-company/videos']">Videos</a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin-company/documentos']">Doumentos</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </nav>

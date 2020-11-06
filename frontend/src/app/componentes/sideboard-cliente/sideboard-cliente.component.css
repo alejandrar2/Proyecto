@@ -1,0 +1,15 @@
+a{
+color: aliceblue;
+}
+a :hover{
+    color: aliceblue !important;
+    
+}
+    
+
+.active{
+    color:black !important;
+}
+.active:hover{
+    color:black !important;
+}

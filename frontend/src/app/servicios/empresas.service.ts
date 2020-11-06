@@ -26,4 +26,14 @@ export class EmpresasService {
   loginEmpresas(empresa){
     return this.http.post(this.url+'/login', empresa);
   }
+  guardarSitio(sitio, idEmpresa){
+    return this.http.post(this.url+'/guardarPagina/'+ idEmpresa, sitio);
+  }
+  guardarProducto(producto, idEmpresa){
+    return this.http.post(this.url+'/guardarProducto/'+ idEmpresa, producto);
+  }
+  guardarImagen(imagen){
+    return this.http.post('https://api.cloudinary.com/v1_1/rubio/image/upload', imagen);
+  }
+
 }

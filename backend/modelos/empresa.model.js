@@ -7,7 +7,8 @@ var esquema = new Modelo({
     correo: { type: String },
     contrasenia: { type: String },
     productos: { type: Array },
-    paginas: { type: Array }
+    paginas: { type: Array },
+    bloquear: { type: Boolean, default : false}
 
 
 });

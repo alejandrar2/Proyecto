@@ -19,6 +19,15 @@ import { ClientesComponent } from './paginas/clientes/clientes.component';
 import { EmpresasComponent } from './paginas/empresas/empresas.component';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SideboardClienteComponent } from './componentes/sideboard-cliente/sideboard-cliente.component';
+import { PerfilEmpresaComponent } from './paginas/perfil-empresa/perfil-empresa.component';
+import { NavbarClienteComponent } from './componentes/navbar-cliente/navbar-cliente.component';
+import { ProductosComponent } from './paginas/productos/productos.component';
+import { SitiiosComponent } from './paginas/sitiios/sitiios.component';
+import { CategoriaComponent } from './paginas/categoria/categoria.component';
+import { GaleriaComponent } from './paginas/galeria/galeria.component';
+import { VideosComponent } from './paginas/videos/videos.component';
+import { DocumentosComponent } from './paginas/documentos/documentos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +43,16 @@ import { CommonModule } from '@angular/common';
     LoginEmpresaComponent,
     LoginClienteComponent,
     ClientesComponent,
-    EmpresasComponent
+    EmpresasComponent,
+    SideboardClienteComponent,
+    PerfilEmpresaComponent,
+    NavbarClienteComponent,
+    ProductosComponent,
+    SitiiosComponent,
+    CategoriaComponent,
+    GaleriaComponent,
+    VideosComponent,
+    DocumentosComponent
     ],
   imports: [
     FormsModule,

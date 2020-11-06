@@ -9,6 +9,13 @@ import { LoginEmpresaComponent } from './paginas/login-empresa/login-empresa.com
 import { LoginClienteComponent } from './paginas/login-cliente/login-cliente.component';
 import { ClientesComponent } from './paginas/clientes/clientes.component';
 import { EmpresasComponent } from './paginas/empresas/empresas.component';
+import { PerfilEmpresaComponent } from './paginas/perfil-empresa/perfil-empresa.component';
+import { ProductosComponent } from './paginas/productos/productos.component';
+import { SitiiosComponent } from './paginas/sitiios/sitiios.component';
+import { CategoriaComponent } from './paginas/categoria/categoria.component';
+import { GaleriaComponent } from './paginas/galeria/galeria.component';
+import { VideosComponent } from './paginas/videos/videos.component';
+import { DocumentosComponent } from './paginas/documentos/documentos.component';
 
 const routes: Routes = [
 
@@ -26,6 +33,27 @@ const routes: Routes = [
   },
   {
     path: 'login-cliente', component: LoginClienteComponent
+  },
+  {
+    path: 'admin-company', component: PerfilEmpresaComponent, children: [
+      {
+        path: 'productos', component: ProductosComponent
+      },
+      {
+        path: 'sitios', component: SitiiosComponent
+      },
+      {
+        path: 'categoria', component: CategoriaComponent
+      },
+      {
+        path: 'galeria', component: GaleriaComponent
+      },
+       {
+        path: 'videos', component: VideosComponent
+      }, {
+        path: 'documentos', component: DocumentosComponent
+      },
+    ]
   },
 
   {

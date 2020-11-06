@@ -1,5 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 @Component({
   selector: 'app-crear-empresa',
@@ -15,7 +17,8 @@ export class CrearEmpresaComponent implements OnInit {
     contrasenia: ''
   }
   
-  constructor(private empresaService: EmpresasService) { }
+
+  constructor(private empresaService: EmpresasService, private routing:Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +30,8 @@ export class CrearEmpresaComponent implements OnInit {
 
       console.log(data);
 
+      window.localStorage.setItem('empresa',JSON.stringify(data.dato));
+      this.routing.navigate(['/admin-company/productos'])
     });
   }
 

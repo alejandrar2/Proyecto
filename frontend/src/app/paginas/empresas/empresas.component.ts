@@ -36,6 +36,8 @@ export class EmpresasComponent implements OnInit {
 
       if(res.Ok){
         this.obtenerEmpresas();
+
+        
       }
 
     } );
