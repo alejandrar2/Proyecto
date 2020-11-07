@@ -28,6 +28,9 @@ import { CategoriaComponent } from './paginas/categoria/categoria.component';
 import { GaleriaComponent } from './paginas/galeria/galeria.component';
 import { VideosComponent } from './paginas/videos/videos.component';
 import { DocumentosComponent } from './paginas/documentos/documentos.component';
+import { AlertComponent } from './componentes/alert/alert.component';
+import { CompanyComponent } from './paginas/company/company.component';
+import { CompanySecondComponent } from './paginas/company-second/company-second.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { DocumentosComponent } from './paginas/documentos/documentos.component';
     CategoriaComponent,
     GaleriaComponent,
     VideosComponent,
-    DocumentosComponent
+    DocumentosComponent,
+    AlertComponent,
+    CompanyComponent,
+    CompanySecondComponent
     ],
   imports: [
     FormsModule,

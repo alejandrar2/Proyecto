@@ -10,18 +10,18 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
+            <th scope="col">Calificacion</th>
             <th scope="col">Precio</th>
             <th scope="col">Eliminar</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Otto</td>
-            <td> <button class="btn btn-danger btn-sm">Eliminar</button> </td>
+        <tr *ngFor="let item of productos">
+            <th scope="row"> <img width="60px" height="50px" src="{{ item.urlImagen }}" alt=""> </th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.calificacion}}</td>
+            <td>{{item.precio}}</td>
+            <td> <button (click)="eliminarProducto(item._id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
         </tr>
     </tbody>
 </table>
@@ -44,11 +44,13 @@
                 <div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre del producto</label>
-                        <input [(ngModel)]="producto.nombre" type="text" class="form-control" placeholder="Nombre del producto">
+                        <input [(ngModel)]="producto.nombre" type="text" class="form-control"
+                            placeholder="Nombre del producto">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Descripcion</label>
-                        <input [(ngModel)]="producto.descripcion" type="text" class="form-control" placeholder="Descripcion">
+                        <label for="formGroupExampleInput2">Calificacion</label>
+                        <input [(ngModel)]="producto.calificacion" type="text" class="form-control"
+                            placeholder="Descripcion">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Precio</label>
@@ -56,20 +58,21 @@
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Categoria</label>
-                       <select [(ngModel)]="producto.categoria" class="form-control">
-                           <option value="">Categoria 1</option>
-                       </select>
+                        <select [(ngModel)]="producto.categoria" class="form-control">
+                            <option *ngFor="let item of categorias" value="{{ item.nombre }}">{{ item.nombre }}</option>
+                        </select>
                     </div>
                     <div>
-                        <input type="file"  (change)="subirImagen($event)" name="archivo" class="d-none" #input>
+                        <input type="file" (change)="subirImagen($event)" name="archivo" class="d-none" #input>
                         <img (click)="input.click()" style="width: 90px; height: 63px; margin-left: 170px;"
                             src="../../../assets/img/upload.png"></div>
                     <div style="margin-left: 170px">Subir Imagen</div>
-                </div>   
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button"(click)="guardarProducto()" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" [disabled]="!imagenSubida" (click)="guardarProducto()"
+                    class="btn btn-primary btn-sm" data-dismiss="modal">Guardar</button>
             </div>
         </div>
     </div>

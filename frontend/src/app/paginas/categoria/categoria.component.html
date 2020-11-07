@@ -4,6 +4,8 @@
     Agregar
 </button>
 
+    <app-alert *ngIf="alert" (click)="alert= false" ></app-alert>
+
 
 <table class="table">
     <thead class="thead-light">
@@ -15,11 +17,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let item of categorias">
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td> <button class="btn btn-danger btn-sm">Eliminar</button> </td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td> <button class="btn btn-danger btn-sm" (click)="eliminarCategotia(item._id)" >Eliminar</button> </td>
         </tr>
     </tbody>
 </table>
@@ -42,17 +44,17 @@
                 <div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre de la categoria</label>
-                        <input type="text" class="form-control" placeholder="Nombre de la categoria">
+                        <input type="text" [(ngModel)]="categoria.nombre" class="form-control" placeholder="Nombre de la categoria">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Descripcion</label>
-                        <input  type="text" class="form-control" placeholder="Descripcion">
+                        <input  type="text" [(ngModel)]="categoria.descripcion" class="form-control" placeholder="Descripcion">
                     </div>
                 </div>   
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" (click)="guardarCategoria()" data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
             </div>
         </div>
     </div>

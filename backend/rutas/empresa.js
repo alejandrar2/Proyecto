@@ -154,5 +154,71 @@ router.post('/guardarPagina/:idEmpresa', (req, res) => {
         });
 
 });
+
+// Obtener Productos
+router.get('/obtenerProductos/:idEmpresa', (req, res) => {
+
+    Modelo.find({ _id: req.params.idEmpresa}, {productos: true})
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Eliminar Productos
+router.delete('/eliminarProducto/:idEmpresa/producto/:idProducto', (req, res) => {
+
+    Modelo.update({ _id: req.params.idEmpresa}, {
+
+        $pull : { productos: { _id: mongoose.Types.ObjectId(req.params.idProducto)  }}
+    })
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Obtener Sitios
+router.get('/obtenerSitios/:idEmpresa', (req, res) => {
+
+    Modelo.find({ _id: req.params.idEmpresa}, {paginas: true})
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Eliminar Sitio
+router.delete('/eliminarSitio/:idEmpresa/sitio/:idSitio', (req, res) => {
+
+    Modelo.update({ _id: req.params.idEmpresa}, {
+
+        $pull : { paginas: { _id: mongoose.Types.ObjectId(req.params.idSitio)  }}
+    })
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
 module.exports = router;
 

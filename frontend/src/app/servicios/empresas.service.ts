@@ -6,34 +6,46 @@ import { Injectable } from '@angular/core';
 })
 export class EmpresasService {
 
-  constructor(private http: HttpClient ) {
+  constructor(private http: HttpClient) {
 
-   }
-   url: string = 'http://localhost:8888/empresa';
+  }
+  url: string = 'http://localhost:8888/empresa';
 
   obtenerEmpresas() {
     return this.http.get(this.url);
   }
-
-  añadirEmpresas(empresa){
+  obtenerSitios(idEmpresa) {
+    return this.http.get(this.url + '/obtenerSitios/' + idEmpresa);
+  }
+  añadirEmpresas(empresa) {
     return this.http.post(this.url, empresa);
   }
 
   eliminarEmpresa(idempresa) {
-    return this.http.delete(this.url+'/'+idempresa);
+    return this.http.delete(this.url + '/' + idempresa);
   }
-
-  loginEmpresas(empresa){
-    return this.http.post(this.url+'/login', empresa);
+  eliminarSitio(idempresa, id) {
+    return this.http.delete(this.url + '/eliminarSitio/' + idempresa + '/sitio/'+ id );
   }
-  guardarSitio(sitio, idEmpresa){
-    return this.http.post(this.url+'/guardarPagina/'+ idEmpresa, sitio);
+ 
+  loginEmpresas(empresa) {
+    return this.http.post(this.url + '/login', empresa);
   }
-  guardarProducto(producto, idEmpresa){
-    return this.http.post(this.url+'/guardarProducto/'+ idEmpresa, producto);
+  guardarSitio(sitio, idEmpresa) {
+    return this.http.post(this.url + '/guardarPagina/' + idEmpresa, sitio);
   }
-  guardarImagen(imagen){
+  guardarProducto(producto, idEmpresa) {
+    return this.http.post(this.url + '/guardarProducto/' + idEmpresa, producto);
+  }
+  guardarImagen(imagen) {
     return this.http.post('https://api.cloudinary.com/v1_1/rubio/image/upload', imagen);
   }
-
+  obtenerProductos(idEmpresa) {
+    return this.http.get(this.url + '/obtenerProductos/' + idEmpresa);
+  }
+  eliminarProducto(idEmpresa, idProducto) {
+    return this.http.delete(this.url + '/eliminarProducto/' + idEmpresa +'/producto/'+ idProducto);
+  }
+  
 }
+

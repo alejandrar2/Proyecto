@@ -14,6 +14,7 @@ var rolesRauter = require('./rutas/roles');
 var clienteRauter = require('./rutas/cliente');
 var usuarioRauter = require('./rutas/usuario');
 var empresaRauter = require('./rutas/empresa');
+var categoriaRauter = require('./rutas/categoria');
 
 
 // Rutas
@@ -21,6 +22,7 @@ app.use('/roles', rolesRauter);
 app.use('/clientes',clienteRauter);
 app.use('/usuario',usuarioRauter);
 app.use('/empresa',empresaRauter);
+app.use('/categoria',categoriaRauter);
 
 
 app.listen(8888, ()=>{

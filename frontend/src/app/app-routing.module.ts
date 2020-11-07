@@ -16,6 +16,8 @@ import { CategoriaComponent } from './paginas/categoria/categoria.component';
 import { GaleriaComponent } from './paginas/galeria/galeria.component';
 import { VideosComponent } from './paginas/videos/videos.component';
 import { DocumentosComponent } from './paginas/documentos/documentos.component';
+import { CompanyComponent } from './paginas/company/company.component';
+import { CompanySecondComponent } from './paginas/company-second/company-second.component';
 
 const routes: Routes = [
 
@@ -50,11 +52,19 @@ const routes: Routes = [
       },
        {
         path: 'videos', component: VideosComponent
-      }, {
+      }, 
+      {
         path: 'documentos', component: DocumentosComponent
       },
     ]
   },
+  {
+    path: 'companies/:idEmpresa', component: CompanyComponent
+  },
+  {
+    path: 'companies/:idEmpresa/pagaes/:idPagina', component: CompanySecondComponent
+  },
+
 
   {
 
