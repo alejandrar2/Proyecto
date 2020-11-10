@@ -59,7 +59,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'companies/:idEmpresa', component: CompanyComponent
+    path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent
   },
   {
     path: 'companies/:idEmpresa/pagaes/:idPagina', component: CompanySecondComponent

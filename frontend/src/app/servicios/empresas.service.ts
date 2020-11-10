@@ -14,6 +14,9 @@ export class EmpresasService {
   obtenerEmpresas() {
     return this.http.get(this.url);
   }
+  obtenerEmpresa(idEmpresa) {
+    return this.http.get(this.url+'/'+idEmpresa);
+  }
   obtenerSitios(idEmpresa) {
     return this.http.get(this.url + '/obtenerSitios/' + idEmpresa);
   }

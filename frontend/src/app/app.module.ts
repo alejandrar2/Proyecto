@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,14 @@ import { DocumentosComponent } from './paginas/documentos/documentos.component';
 import { AlertComponent } from './componentes/alert/alert.component';
 import { CompanyComponent } from './paginas/company/company.component';
 import { CompanySecondComponent } from './paginas/company-second/company-second.component';
+import { NavbarPlantillaComponent } from './componentes/navbar-plantilla/navbar-plantilla.component';
+import { FooterPlantillaComponent } from './componentes/footer-plantilla/footer-plantilla.component';
+import { MenuPlantillaComponent } from './componentes/menu-plantilla/menu-plantilla.component';
+import { ProductosPlantillaComponent } from './componentes/productos-plantilla/productos-plantilla.component';
+import { GaleriaPlantillaComponent } from './componentes/galeria-plantilla/galeria-plantilla.component';
+import { Bloque1Component } from './componentes/bloque1/bloque1.component';
+import { HeaderPlantillaComponent } from './componentes/header-plantilla/header-plantilla.component';
+import { EditorComponent } from './componentes/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -58,17 +67,27 @@ import { CompanySecondComponent } from './paginas/company-second/company-second.
     DocumentosComponent,
     AlertComponent,
     CompanyComponent,
-    CompanySecondComponent
-    ],
+    CompanySecondComponent,
+    NavbarPlantillaComponent,
+    FooterPlantillaComponent,
+    MenuPlantillaComponent,
+    ProductosPlantillaComponent,
+    GaleriaPlantillaComponent,
+    Bloque1Component,
+    HeaderPlantillaComponent,
+    EditorComponent,
+    Bloque1Component
+  ],
   imports: [
     FormsModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
 
   ],
-  providers: [ UsuarioService ],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 

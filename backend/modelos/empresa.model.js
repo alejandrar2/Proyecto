@@ -8,8 +8,12 @@ var esquema = new Modelo({
     contrasenia: { type: String },
     productos: { type: Array },
     paginas: { type: Array },
-    bloquear: { type: Boolean, default : false}
+    bloquear: { type: Boolean, default : false},
+  
 
 
 });
 module.exports = mongoose.model('Empresa', esquema);
+
+
+

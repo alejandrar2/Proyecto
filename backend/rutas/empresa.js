@@ -191,9 +191,9 @@ router.delete('/eliminarProducto/:idEmpresa/producto/:idProducto', (req, res) =>
 // Obtener Sitios
 router.get('/obtenerSitios/:idEmpresa', (req, res) => {
 
-    Modelo.find({ _id: req.params.idEmpresa}, {paginas: true})
+    Modelo.findOne({ _id: req.params.idEmpresa}, {paginas: true})
         .then(datos => {
-            res.send({ respuesta: true, datos });
+            res.send({ paginas : datos.paginas });
             res.end();
         })
         .catch(error => {
