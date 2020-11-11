@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
         rubro: req.body.rubro,
         correo: req.body.correo,
         contrasenia: req.body.contrasenia,
+        logotipo: req.body.logotipo,
         productos: [],
         paginas: []
     });
@@ -99,12 +100,10 @@ router.post('/guardarProducto/:idEmpresa', (req, res) => {
                 productos: {
                     _id: mongoose.Types.ObjectId(),
                     nombre: req.body.nombre,
-                    calificacion: req.body.calificacion,
-                    precio: req.body.precio,
+                    calificacion: Number(req.body.calificacion),
+                    precio: Number(req.body.precio),
+                    categoria: req.body.categoria,
                     urlImagen: req.body.urlImagen
-
-
-
                 }
             }
         }
@@ -137,8 +136,8 @@ router.post('/guardarPagina/:idEmpresa', (req, res) => {
                     palabrasClaves: req.body.palabrasClaves,
                     navbar: req.body.navbar,
                     footer: req.body.footer,
-                    paginaPrincipal: req.body.paginaPrincipal,
-                    urlImagen: req.body.urlImagen
+                    paginaPrincipal: req.body.paginaPrincipal
+                    
 
                 }
             }

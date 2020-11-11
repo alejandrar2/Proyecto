@@ -67,7 +67,6 @@ const routes: Routes = [
 
 
   {
-
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'usuario', component: UsuariosComponent },
       { path: 'clientes', component: ClientesComponent },

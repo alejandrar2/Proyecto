@@ -10,7 +10,7 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 export class CompanyComponent implements OnInit {
 
   idEmpresa: String;
-  empresa: any;
+  empresa: any = '';
   index:any;
 
   constructor(private servicio: EmpresasService, private activatedRoute: ActivatedRoute) { }
@@ -22,7 +22,7 @@ export class CompanyComponent implements OnInit {
 
     this.obtenerInformacionEmpresa();
 
-    this.obtenerPaginas();
+    //this.obtenerPaginas();
 
   
   }
@@ -30,7 +30,7 @@ export class CompanyComponent implements OnInit {
   obtenerInformacionEmpresa() {
     this.servicio.obtenerEmpresa(this.idEmpresa).subscribe((data: any) => {
       this.empresa = data;
-      //console.log('Empresa ', data);
+      console.log('Empresa ', this.empresa);
     });
   }
 

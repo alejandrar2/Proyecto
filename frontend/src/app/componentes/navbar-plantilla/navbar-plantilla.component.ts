@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { EmpresasService } from 'src/app/servicios/empresas.service';
 
 @Component({
   selector: 'app-navbar-plantilla',
@@ -6,11 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./navbar-plantilla.component.css']
 })
 export class NavbarPlantillaComponent implements OnInit {
-  @Input() sitio : any
-  
-  constructor() { }
+  @Input() empresa: any = '';
+
+  constructor( private servicio:EmpresasService ) { }
 
   ngOnInit(): void {
-  }
 
+    console.log('Sitio : ', this.empresa);
+
+  }
 }
