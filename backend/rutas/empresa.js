@@ -107,8 +107,6 @@ router.post('/guardarProducto/:idEmpresa', (req, res) => {
                 }
             }
         }
-
-
     )
         .then(datos => {
             res.send({ respuesta: true, datos });
@@ -137,8 +135,6 @@ router.post('/guardarPagina/:idEmpresa', (req, res) => {
                     navbar: req.body.navbar,
                     footer: req.body.footer,
                     paginaPrincipal: req.body.paginaPrincipal
-                    
-
                 }
             }
         }

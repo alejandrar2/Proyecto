@@ -18,6 +18,7 @@ import { VideosComponent } from './paginas/videos/videos.component';
 import { DocumentosComponent } from './paginas/documentos/documentos.component';
 import { CompanyComponent } from './paginas/company/company.component';
 import { CompanySecondComponent } from './paginas/company-second/company-second.component';
+import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.component';
 
 const routes: Routes = [
 
@@ -55,6 +56,9 @@ const routes: Routes = [
       }, 
       {
         path: 'documentos', component: DocumentosComponent
+      },
+      {
+        path: 'perfil', component: EmpresaPerfilComponent
       },
     ]
   },

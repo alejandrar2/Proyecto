@@ -2,14 +2,19 @@
     <div class="btn-group" role="group" aria-label="Basic example" style="float: right !important;">
         <button (click)=" editando=true" type="button" class="btn btn-secondary">Editar</button>
         <button (click)="obtenerData()" type="button" class="btn btn-secondary">Ver</button>
-        <button (click)=" editando=false" type="button" class="btn btn-secondary">Guardar</button>
+        <button (click)="actualizarBloque()"  type="button" class="btn btn-secondary">Guardar</button>
     </div>
 </div>
 
-<br> <i class="fab fa-500px"></i><br>
+<br><br>
 
 <div class="container mb-2" *ngIf="!editando">
-    <app-header-plantilla></app-header-plantilla>
+
+    <app-header-plantilla *ngIf="header" [header]="header" ></app-header-plantilla>
+
+    <app-imagen-plantilla *ngIf="imagen" [imagen]="imagen" ></app-imagen-plantilla>
+
+
 </div>
 
 

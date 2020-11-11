@@ -40,6 +40,8 @@ import { GaleriaPlantillaComponent } from './componentes/galeria-plantilla/galer
 import { Bloque1Component } from './componentes/bloque1/bloque1.component';
 import { HeaderPlantillaComponent } from './componentes/header-plantilla/header-plantilla.component';
 import { EditorComponent } from './componentes/editor/editor.component';
+import { ImagenComponent } from './componentes/imagen-plantilla/imagen.component';
+import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { EditorComponent } from './componentes/editor/editor.component';
     Bloque1Component,
     HeaderPlantillaComponent,
     EditorComponent,
-    Bloque1Component
+    Bloque1Component,
+    ImagenComponent,
+    EmpresaPerfilComponent
   ],
   imports: [
     FormsModule,

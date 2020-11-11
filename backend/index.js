@@ -15,7 +15,7 @@ var clienteRauter = require('./rutas/cliente');
 var usuarioRauter = require('./rutas/usuario');
 var empresaRauter = require('./rutas/empresa');
 var categoriaRauter = require('./rutas/categoria');
-//var contenidoRauter = require('./rutas/contenido');
+var contenidoRauter = require('./rutas/contenido');
 
 
 // Rutas
@@ -24,7 +24,7 @@ app.use('/clientes',clienteRauter);
 app.use('/usuario',usuarioRauter);
 app.use('/empresa',empresaRauter);
 app.use('/categoria',categoriaRauter);
-//app.use('/contenido',contenidoRauter);
+app.use('/contenido',contenidoRauter);
 
 
 app.listen(8888, ()=>{

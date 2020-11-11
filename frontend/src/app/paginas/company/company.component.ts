@@ -10,6 +10,8 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 export class CompanyComponent implements OnInit {
 
   idEmpresa: String;
+  idPagina: String;
+
   empresa: any = '';
   index:any;
 
@@ -19,6 +21,8 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
 
     this.idEmpresa = this.activatedRoute.snapshot.paramMap.get('idEmpresa');
+    this.idPagina = this.activatedRoute.snapshot.paramMap.get('idPagina');
+
 
     this.obtenerInformacionEmpresa();
 
@@ -32,6 +36,10 @@ export class CompanyComponent implements OnInit {
       this.empresa = data;
       console.log('Empresa ', this.empresa);
     });
+  }
+
+  obtenerContenido(){
+    
   }
 
   obtenerPaginas() {

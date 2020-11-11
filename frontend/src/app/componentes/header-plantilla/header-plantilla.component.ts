@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header-plantilla',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderPlantillaComponent implements OnInit {
 
+  @Input() header: any;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  obtnerImagen(){
+    
   }
 
 }
