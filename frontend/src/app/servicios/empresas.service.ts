@@ -32,7 +32,7 @@ export class EmpresasService {
   }
  
   loginEmpresas(empresa) {
-    return this.http.post(this.url + '/login', empresa);
+    return this.http.post(this.url + '/loginEmpresa', empresa);
   }
   guardarSitio(sitio, idEmpresa) {
     return this.http.post(this.url + '/guardarPagina/' + idEmpresa, sitio);
@@ -49,6 +49,17 @@ export class EmpresasService {
   eliminarProducto(idEmpresa, idProducto) {
     return this.http.delete(this.url + '/eliminarProducto/' + idEmpresa +'/producto/'+ idProducto);
   }
-  
+  guardarImagenNode(imagen, idEmpresa) {
+    return this.http.post(this.url + '/guardarImagen/' + idEmpresa, imagen);
+  }
+  obtenerImagen(idEmpresa) {
+    return this.http.get(this.url + '/obtenerImagen/' + idEmpresa);
+  }
+  eliminarImagen(idEmpresa, idImagen) {
+    return this.http.delete(this.url + '/eliminarImagen/' + idEmpresa +'/imagen/'+ idImagen);
+  }
+  actualizarLogotipo(idEmpresa, logotipo) {
+    return this.http.put(this.url + '/actualizarLogotipo/' + idEmpresa , {logotipo});
+  }
 }
 

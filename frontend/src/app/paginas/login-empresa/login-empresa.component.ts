@@ -1,4 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmpresasService } from 'src/app/servicios/empresas.service';
 
 @Component({
   selector: 'app-login-empresa',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginEmpresaComponent implements OnInit {
 
-  constructor() { }
+  empresa = {
+    correo: '',
+    contrasenia: ''
+  }
+
+  constructor(private serviceEmpresa : EmpresasService, private route: Router ) { }
 
   ngOnInit(): void {
   }
+
+
+  login(){
+    this.serviceEmpresa.loginEmpresas(this.empresa).subscribe ((data:any)=>{
+      console.log(data)
+
+      if( data.datos.length > 0 ){
+        window.localStorage.setItem('Empresa', JSON.stringify(data.datos[0]));
+
+        this.route.navigate(['/admin-company/perfil'])
+      }
+
+    })
+  }
+
+
 
 }

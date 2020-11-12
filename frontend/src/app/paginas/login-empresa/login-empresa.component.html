@@ -9,12 +9,12 @@
             <img style="width: 296px; height: 231px; border-radius: 50px;" src="../../../assets/img/logo.png">
             <div class="textbox">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username">
+                <input [(ngModel)]="empresa.correo"  type="text" placeholder="Username">
             </div>
 
             <div class="textbox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password">
+                <input  [(ngModel)]="empresa.contrasenia" type="password" placeholder="Password">
             </div>
             <div style="color: #2ecece;" class="checkbox mb-3">
                 <label>
@@ -22,7 +22,7 @@
                 </label>
             </div>
 
-            <input type="button" class="btn" value="Sign in">
+            <input (click)="login()" type="button" class="btn" value="Sign in">
         </div>
     </div>
 

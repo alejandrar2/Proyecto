@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 
 });
 
-// Añadir
+// Agregar Empresa
 router.post('/', (req, res) => {
 
     let nuevo = new Modelo({
@@ -43,7 +43,8 @@ router.post('/', (req, res) => {
         contrasenia: req.body.contrasenia,
         logotipo: req.body.logotipo,
         productos: [],
-        paginas: []
+        paginas: [],
+        imagenes: []
     });
 
     nuevo.save()
@@ -75,9 +76,10 @@ router.delete('/:id', (req, res) => {
         });
 });
 // Login Empresa
-router.post('/logEmpresa', (req, res) => {
+router.post('/loginEmpresa', (req, res) => {
 
-    Modelo.find({ correo: req.body.correo, contrasenia: req.body.contrasenia }, { nombre: true, rubro: true, correo: true, productos: paginas, paginas: true })
+    Modelo.find({ correo: req.body.correo, contrasenia: req.body.contrasenia }, 
+        { nombre: true, rubro: true, logotipo : true, plan: true, correo: true, productos: true, paginas: true, imagenes:true })
         .then(datos => {
             res.send({ respuesta: true, datos });
             res.end();
@@ -207,6 +209,80 @@ router.delete('/eliminarSitio/:idEmpresa/sitio/:idSitio', (req, res) => {
     })
         .then(datos => {
             res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Guardar imagen
+router.post('/guardarImagen/:idEmpresa', (req, res) => {
+
+    Modelo.update({
+        _id: mongoose.Types.ObjectId(req.params.idEmpresa)
+    },
+        {
+            $push: {
+                imagenes: {
+                    _id: mongoose.Types.ObjectId(),
+                    nombre: req.body.nombre,
+                    urlImagen: req.body.urlImagen
+                }
+            }
+        }
+    )
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+// Obtener Imagenes
+router.get('/obtenerImagenes/:idEmpresa', (req, res) => {
+
+    Modelo.find({ _id: req.params.idEmpresa}, {productos: true})
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+// Eliminar Imagenes
+router.delete('/eliminarImagen/:idEmpresa/imagen/:idImagen', (req, res) => {
+
+    Modelo.update({ _id: req.params.idEmpresa}, {
+
+        $pull : { imagen: { _id: mongoose.Types.ObjectId(req.params.idImagen)  }}
+    })
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
+
+// Actualizar logotipo
+router.put('/actualizarLogotipo/:idEmpresa', (req, res) => {
+
+    Modelo.update({ _id: req.params.idEmpresa}, {
+        logotipo: req.body.logotipo
+    })
+        .then(datos => {
+            res.send(datos);
             res.end();
         })
         .catch(error => {
