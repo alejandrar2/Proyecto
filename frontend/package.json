@@ -22,8 +22,10 @@
     "@ckeditor/ckeditor5-angular": "^2.0.1",
     "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.0",
+    "@sweetalert2/ngx-sweetalert2": "^8.1.1",
     "animate.css": "^4.1.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^10.10.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

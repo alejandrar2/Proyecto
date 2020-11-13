@@ -247,9 +247,9 @@ router.post('/guardarImagen/:idEmpresa', (req, res) => {
 // Obtener Imagenes
 router.get('/obtenerImagenes/:idEmpresa', (req, res) => {
 
-    Modelo.find({ _id: req.params.idEmpresa}, {productos: true})
+    Modelo.find({ _id: req.params.idEmpresa}, {imagenes: true})
         .then(datos => {
-            res.send({ respuesta: true, datos });
+            res.send(datos);
             res.end();
         })
         .catch(error => {
@@ -291,5 +291,23 @@ router.put('/actualizarLogotipo/:idEmpresa', (req, res) => {
         });
 
 });
+
+// Actualizar plan
+router.put('/actualizarPlan/:idEmpresa', (req, res) => {
+
+    Modelo.update({ _id: req.params.idEmpresa}, {
+        plan: req.body.plan
+    })
+        .then(datos => {
+            res.send(datos);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
 module.exports = router;
 

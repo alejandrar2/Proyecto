@@ -88,7 +88,7 @@ import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CKEditorModule
+    CKEditorModule,
 
   ],
   providers: [UsuarioService],

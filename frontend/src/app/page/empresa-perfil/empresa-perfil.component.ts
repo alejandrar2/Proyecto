@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
+import { PlanService } from 'src/app/servicios/plan.service';
 
 @Component({
   selector: 'app-empresa-perfil',
@@ -7,20 +8,29 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
   styleUrls: ['./empresa-perfil.component.css']
 })
 export class EmpresaPerfilComponent implements OnInit {
-    imagen = {
+  imagen = {
     nombre: '',
     urlImagen: ''
   }
 
-  imagenNueva: String;
-
+  imagenNueva: String = 'Seleccionar plan';
+  planes: any;
   empresa: any;
+  planSeleccionado: any = {
+    nombre: '',
+    precio: '',
+    cantidadPaginas: '',
+    cantidadProductos: ''
+  };
 
-imagenSubida: boolean = false;
-  constructor(private serviceEmpresa: EmpresasService ) { }
+
+  imagenSubida: boolean = false;
+  constructor(private serviceEmpresa: EmpresasService, private servicePlan: PlanService) { }
 
   ngOnInit(): void {
     this.empresa = JSON.parse(window.localStorage.getItem('Empresa'));
+
+    this.ObtnerPlanes();
   }
   subirImagen(e) {
     let imagen = e.target.files[0];
@@ -38,17 +48,17 @@ imagenSubida: boolean = false;
     });
   }
 
-  actualizarInformacionEmpresa(){
+  actualizarInformacionEmpresa() {
     this.serviceEmpresa.obtenerEmpresa(this.empresa._id).subscribe((data: any) => {
       if (data) {
         console.log(data);
         this.empresa = data;
-        window.localStorage.setItem('Empresa', JSON.stringify(data) );
+        window.localStorage.setItem('Empresa', JSON.stringify(data));
       }
     });
   }
 
-  subirImagenNode(){
+  subirImagenNode() {
     this.serviceEmpresa.actualizarLogotipo(this.empresa._id, this.imagenNueva).subscribe((data: any) => {
       if (data) {
         console.log(data);
@@ -56,5 +66,40 @@ imagenSubida: boolean = false;
       }
     });
   }
-  
+
+  ObtnerPlanes() {
+    this.servicePlan.obtenerPlanes().subscribe((data: any) => {
+      if (data) {
+        console.log(data);
+        this.planes = data;
+      }
+    });
+  }
+
+  selecionarPlan() {
+
+    for (let j = 0; j < this.planes.length; j++) {
+
+      if (this.planSeleccionado.nombre == this.planes[j].nombre) {
+        this.planSeleccionado.cantidadProductos = this.planes[j].cantidadProductos;
+        this.planSeleccionado.cantidadPaginas = this.planes[j].cantidadPaginas;
+        this.planSeleccionado.precio = this.planes[j].precio;
+
+      }
+    }
+
+    //console.log(this.planSeleccionado);
+
+  }
+
+  actualizarPlan() {
+
+    this.serviceEmpresa.actualizarPlan(this.empresa._id, this.planSeleccionado.nombre).subscribe((data: any) => {
+      //console.log(data);
+      this.actualizarInformacionEmpresa();
+
+    });
+
+  }
+
 }

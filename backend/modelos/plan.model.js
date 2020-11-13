@@ -3,7 +3,9 @@ var Modelo = mongoose.Schema;
 
 var esquema = new Modelo({
     nombre: { type: String },
-    descripcion: { type: String },
-    precio: {type: Number}
+    cantidadPaginas: { type: Number},
+    cantidadProductos: { type: Number },
+    precio: {type: Number},
+
 });
 module.exports = mongoose.model('Planes', esquema);

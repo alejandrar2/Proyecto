@@ -8,7 +8,7 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 })
 export class SitiiosComponent implements OnInit {
 
-  empresa = JSON.parse(window.localStorage.getItem('empresa'));
+  empresa = JSON.parse(window.localStorage.getItem('Empresa'));
   imagen: any;
   imagenSubida: boolean = false;
   sitios: any;

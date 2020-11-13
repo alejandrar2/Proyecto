@@ -55,11 +55,17 @@ export class EmpresasService {
   obtenerImagen(idEmpresa) {
     return this.http.get(this.url + '/obtenerImagen/' + idEmpresa);
   }
+  obtenerImagenes(idEmpresa) {
+    return this.http.get(this.url + '/obtenerImagenes/' + idEmpresa);
+  }
   eliminarImagen(idEmpresa, idImagen) {
     return this.http.delete(this.url + '/eliminarImagen/' + idEmpresa +'/imagen/'+ idImagen);
   }
   actualizarLogotipo(idEmpresa, logotipo) {
     return this.http.put(this.url + '/actualizarLogotipo/' + idEmpresa , {logotipo});
+  }
+  actualizarPlan(idEmpresa, plan) {
+    return this.http.put(this.url + '/actualizarPlan/' + idEmpresa , {plan});
   }
 }
 
