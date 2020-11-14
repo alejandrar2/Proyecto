@@ -1,10 +1,14 @@
 <h3>Categorias</h3>
-<button style="margin-bottom: 15px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+<button style="margin-bottom: 15px;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
     data-target="#exampleModal">
     Agregar
 </button>
-
-    <app-alert *ngIf="alert" (click)="alert= false" ></app-alert>
+<div *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
 
 <table class="table">

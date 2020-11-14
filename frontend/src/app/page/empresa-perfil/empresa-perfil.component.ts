@@ -23,12 +23,14 @@ export class EmpresaPerfilComponent implements OnInit {
     cantidadProductos: ''
   };
 
-
+  informacionEmpresa: any;
   imagenSubida: boolean = false;
   constructor(private serviceEmpresa: EmpresasService, private servicePlan: PlanService) { }
 
   ngOnInit(): void {
-    this.empresa = JSON.parse(window.localStorage.getItem('Empresa'));
+    this.informacionEmpresa = JSON.parse(window.localStorage.getItem('Empresa'));
+    this.actualizarInformacionEmpresa()
+
 
     this.ObtnerPlanes();
   }
@@ -49,7 +51,7 @@ export class EmpresaPerfilComponent implements OnInit {
   }
 
   actualizarInformacionEmpresa() {
-    this.serviceEmpresa.obtenerEmpresa(this.empresa._id).subscribe((data: any) => {
+    this.serviceEmpresa.obtenerEmpresa(this.informacionEmpresa._id).subscribe((data: any) => {
       if (data) {
         console.log(data);
         this.empresa = data;
@@ -59,7 +61,7 @@ export class EmpresaPerfilComponent implements OnInit {
   }
 
   subirImagenNode() {
-    this.serviceEmpresa.actualizarLogotipo(this.empresa._id, this.imagenNueva).subscribe((data: any) => {
+    this.serviceEmpresa.actualizarLogotipo(this.informacionEmpresa._id, this.imagenNueva).subscribe((data: any) => {
       if (data) {
         console.log(data);
         this.actualizarInformacionEmpresa();
@@ -101,5 +103,4 @@ export class EmpresaPerfilComponent implements OnInit {
     });
 
   }
-
 }

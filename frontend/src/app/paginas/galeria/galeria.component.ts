@@ -11,6 +11,7 @@ export class GaleriaComponent implements OnInit {
   empresa:any;
   imagenes:any;
   imagenNueva:any;
+  mensaje:any;
 
   constructor( private serviceEmpresa: EmpresasService ) { }
 
@@ -25,10 +26,8 @@ export class GaleriaComponent implements OnInit {
 
   obtenerImagenes(){
     this.serviceEmpresa.obtenerImagenes(this.empresa._id).subscribe( (data:any) => {
-
       this.imagenes = data[0].imagenes;
       console.log(this.imagenes);
-
     } );
   }
 
@@ -59,9 +58,22 @@ export class GaleriaComponent implements OnInit {
     this.serviceEmpresa.guardarImagenNode(imagen, this.empresa._id).subscribe((data: any) => {
       if (data) {
         console.log(data);
+        this.mensaje = 'Imagen guardada con exito';
         this.obtenerImagenes();
       }
     });
   }
+
+eliminarImagen(id){
+  this.serviceEmpresa.eliminarImagen(this.empresa._id, id).subscribe((data: any) => {
+    console.log('data',  data);
+
+    if (data) {
+      this.obtenerImagenes();
+      console.log('data',  data);
+    }
+  })
+}
+
 
 }

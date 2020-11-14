@@ -1,8 +1,16 @@
 <h3>Paginas</h3>
-<button style="margin-bottom: 15px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+<button style="margin-bottom: 15px;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
     data-target="#exampleModal">
     Agregar
 </button>
+
+<div *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+  <strong>{{ mensaje }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 
 
 <table class="table">
@@ -12,6 +20,7 @@
             <th scope="col">Titulo</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +29,8 @@
             <td>{{item.titulo}}</td>
             <td>{{item.descripcion}}</td>
             <td> <button (click)="eliminarSitio(item._id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
-            <td> <a [routerLink]="['/companies/', item._id ]" routerLinkActive="router-link-active"  class="btn btn-danger btn-sm">ver</a> </td>
-        </tr>
+            <td> <a [routerLink]="['/admin-companies/'+ empresa._id + '/pages/' + item._id ]" routerLinkActive="router-link-active"  class="btn btn-success btn-sm">Editar</a> </td>
+        </tr> 
     </tbody>
 </table>
 
@@ -82,7 +91,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" [disabled]="!imagenSubida" (click)="guardarSitio()"
+                <button type="button"  (click)="guardarSitio()"
                  class="btn btn-primary btn-sm" data-dismiss="modal">Guardar</button>
             </div>
         </div>

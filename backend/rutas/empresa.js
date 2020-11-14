@@ -263,10 +263,10 @@ router.delete('/eliminarImagen/:idEmpresa/imagen/:idImagen', (req, res) => {
 
     Modelo.update({ _id: req.params.idEmpresa}, {
 
-        $pull : { imagen: { _id: mongoose.Types.ObjectId(req.params.idImagen)  }}
+        $pull : { imagenes: { _id: mongoose.Types.ObjectId(req.params.idImagen)  }}
     })
         .then(datos => {
-            res.send({ respuesta: true, datos });
+            res.send(datos );
             res.end();
         })
         .catch(error => {

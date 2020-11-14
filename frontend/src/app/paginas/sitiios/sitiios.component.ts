@@ -21,6 +21,9 @@ export class SitiiosComponent implements OnInit {
     paginaPrincipal: '',
     urlImagen: ''
   }
+
+  mensaje: String;
+  alert:any;
   constructor(private serviceEmpresa: EmpresasService) { }
 
   ngOnInit(): void {
@@ -51,13 +54,15 @@ export class SitiiosComponent implements OnInit {
     this.serviceEmpresa.guardarSitio(this.sitio, this.empresa._id).subscribe((data: any) => {
       console.log(data);
       this.obtenerSitios();
+      this.mensaje = 'Pagina agregado con exito ';
+      this.alert = 'success';
     });
   
   }
   obtenerSitios() {
     this.serviceEmpresa.obtenerSitios(this.empresa._id).subscribe((data: any) => {
       console.log(data);
-      this.sitios = data.datos[0].paginas;
+      this.sitios = data.paginas;
       this.limpiarCampos();
     });
   }
@@ -75,10 +80,14 @@ export class SitiiosComponent implements OnInit {
 
   eliminarSitio(id) {
     //console.log(id);
+    this.mensaje = '';
     this.serviceEmpresa.eliminarSitio(this.empresa._id, id).subscribe((data: any) => {
       console.log(data);
 
       this.obtenerSitios();
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
+
 
     })
   }

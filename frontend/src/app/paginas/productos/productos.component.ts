@@ -14,7 +14,7 @@ export class ProductosComponent implements OnInit {
   imagenSubida: boolean;
   producto = {
     nombre: '',
-    calificacion: '',
+    calificacion: 0,
     precio: '',
     categoria: '',
     urlImagen: ''
@@ -22,6 +22,8 @@ export class ProductosComponent implements OnInit {
 
   productos:any;
   categorias:any;
+  mensaje: String;
+  alert:any;
 
   constructor(private serviceEmpresa: EmpresasService, private serviceCategoria: CategoriaService) { }
 
@@ -54,7 +56,8 @@ export class ProductosComponent implements OnInit {
     this.serviceEmpresa.guardarProducto(this.producto, this.empresa._id).subscribe((data: any) => {
       console.log(data);
       this.obtenerProducto();
-      
+      this.mensaje = 'Producto agregado con exito ';
+      this.alert = 'success';
     });
   }
 
@@ -68,10 +71,9 @@ export class ProductosComponent implements OnInit {
 
   limpiarCampos(){
     this.producto.nombre = '';
-    this.producto.calificacion = '';
+    this.producto.calificacion = 0;
     this.producto.precio = '';
     this.producto.urlImagen = '';
-    this.producto.calificacion = '';
     this.imagenSubida = false;
 
   }
@@ -84,11 +86,15 @@ export class ProductosComponent implements OnInit {
   }
 
   eliminarProducto(id){
+    this.mensaje = '';
     console.log(id);
     this.serviceEmpresa.eliminarProducto(this.empresa._id, id).subscribe((data : any)=>{
       console.log(data);
-      if( data.respueta ){
+      if( data ){
         this.obtenerProducto();
+        this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
+
       }
     })
   }

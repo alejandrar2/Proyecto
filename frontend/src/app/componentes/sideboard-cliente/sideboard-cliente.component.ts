@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideboardClienteComponent implements OnInit {
 
+  empresa:any;
+
   constructor() { }
 
   ngOnInit(): void {
+
+  this.empresa = JSON.parse(window.localStorage.getItem('Empresa'));
+
+
   }
 
 }

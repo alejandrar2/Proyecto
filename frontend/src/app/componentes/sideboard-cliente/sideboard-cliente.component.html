@@ -1,9 +1,9 @@
-<nav  style="background-color:#FFA500; height: 100%;" id="sidebar">
+<nav  style="background-color:#009688; height: 100%;" id="sidebar">
     <div  class="p-4 pt-5">
-      <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);width: 162px; height: 126px; border-radius: 0px!important;">Logotipo</a>
+      <a href="#" class="img logo rounded-circle mb-5"> <img class="img-fluid rounded-circle" src="{{ empresa.logotipo }}" alt=""> </a>
       <ul class="list-unstyled components mb-5">
         <li class="">
-          <label for="">Nombre Empresa</label>
+          <h4 style="color: #424242;" class="text-center">{{ empresa.nombre }} </h4>
         <li>
           <a  [routerLink]="['/admin-company/productos']">Productos</a>
         </li>

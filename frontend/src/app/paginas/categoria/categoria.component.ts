@@ -14,7 +14,9 @@ export class CategoriaComponent implements OnInit {
   }
 
   categorias : any;
-  alert : boolean;
+  mensaje: String;
+  alert:any;
+
 
   constructor( private serviceCategoria : CategoriaService) {
   
@@ -31,7 +33,8 @@ export class CategoriaComponent implements OnInit {
     this.serviceCategoria.añadirCategoria(this.categoria).subscribe((data : any)=> {
       console.log(data);
       this.obtenerCategorias();
-      this.alert= true;
+      this.mensaje = 'Categoria agregado con exito ';
+      this.alert = 'success';
     })
 
   }
@@ -45,9 +48,12 @@ export class CategoriaComponent implements OnInit {
 
   eliminarCategotia(id){
     console.log(id);
+    this.mensaje = '';
     this.serviceCategoria.eliminarCategoria(id).subscribe((data : any)=>{
       if( data.Ok ){
         this.obtenerCategorias();
+        this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
       }
     })
   }
