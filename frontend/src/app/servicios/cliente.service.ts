@@ -6,25 +6,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClienteService {
 
-  constructor(private http: HttpClient) { 
-}
+  constructor(private http: HttpClient) {
+  }
 
-url: string = 'http://localhost:8888/clientes';
+  url: string = 'http://localhost:8888/clientes';
 
-  obtenerCliente() {
+  obtenerClientes() {
     return this.http.get(this.url);
   }
 
-  añadircliente(cliente){
+  obtenerCliente(idCliente) {
+    return this.http.get(this.url + '/' + idCliente);
+  }
+
+  añadircliente(cliente) {
     return this.http.post(this.url, cliente);
   }
 
   eliminarCliente(idcliente) {
-    return this.http.delete(this.url+'/'+idcliente);
+    return this.http.delete(this.url + '/' + idcliente);
   }
 
-  loginCliente(cliente){
-    return this.http.post(this.url+'/login', cliente);
+  loginCliente(cliente) {
+    return this.http.post(this.url + '/login', cliente);
   }
-
+  añadirProductos(idUsuario, producto) {
+    return this.http.post(this.url + '/guardarProducto/' + idUsuario, producto);
+  }
+  eliminarProducto(idProducto, idUsuario) {
+    return this.http.delete(this.url + '/eliminarProducto/' + idUsuario + '/producto/' + idProducto);
+  }
+  obtenerProductosCliente(idUsuario) {
+    return this.http.get(this.url + '/compras/' + idUsuario);
+  }
 }

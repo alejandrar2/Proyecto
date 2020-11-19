@@ -306,7 +306,6 @@ router.put('/actualizarPlan/:idEmpresa', (req, res) => {
             res.send(error);
             res.end();
         });
-
 });
 
 module.exports = router;

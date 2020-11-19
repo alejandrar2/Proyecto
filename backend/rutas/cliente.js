@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Modelo = require('../modelos/cliente.model')
+var Modelo = require('../modelos/cliente.model');
+var mongoose = require('mongoose');
+
 
 
 // Obtener
@@ -86,5 +88,86 @@ router.post('/loginCliente', (req, res) => {
         });
 
 });
+
+// Actualizar fotoPerfil
+router.put('/actualizarFotoPerfil/:idUsuario', (req, res) => {
+
+    Modelo.update({ _id: req.params.idUsuario}, {
+        fotoPerfil: req.body.fotoPerfil
+    })
+        .then(datos => {
+            res.send(datos);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Guardar producto
+router.post('/guardarProducto/:idUsuario', (req, res) => {
+
+    Modelo.update({
+        _id: mongoose.Types.ObjectId(req.params.idUsuario)
+    },
+        {
+            $push: {
+                compras: {
+                    _id: mongoose.Types.ObjectId(),
+                    nombre: req.body.nombre,
+                    calificacion: Number(req.body.calificacion),
+                    precio: Number(req.body.precio),
+                    categoria: req.body.categoria,
+                    urlImagen: req.body.urlImagen
+                }
+            }
+        }
+    )
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Eliminar Producto
+router.delete('/eliminarProducto/:idUsuario/producto/:idProducto', (req, res) => {
+
+    Modelo.update({ _id: req.params.idUsuario}, {
+
+        $pull : { compras: { _id: mongoose.Types.ObjectId(req.params.idProducto)  }}
+    })
+        .then(datos => {
+            res.send({ respuesta: true, datos });
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
+// Obtener productos de clientes
+router.get('/compras/:idUsuario', (req, res) => {
+
+    Modelo.findOne({ _id: req.params.idUsuario}, { compras: true })
+        .then(datos => {
+            res.send(datos);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
 
 module.exports = router;

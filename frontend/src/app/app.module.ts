@@ -41,7 +41,8 @@ import { Bloque1Component } from './componentes/bloque1/bloque1.component';
 import { HeaderPlantillaComponent } from './componentes/header-plantilla/header-plantilla.component';
 import { EditorComponent } from './componentes/editor/editor.component';
 import { ImagenComponent } from './componentes/imagen-plantilla/imagen.component';
-import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.component';
+import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.component';
+import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.com
     EditorComponent,
     Bloque1Component,
     ImagenComponent,
-    EmpresaPerfilComponent
+    EmpresaPerfilComponent,
+    ClientePerfilComponent
   ],
   imports: [
     FormsModule,

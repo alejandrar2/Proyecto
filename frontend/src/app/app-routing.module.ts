@@ -18,7 +18,8 @@ import { VideosComponent } from './paginas/videos/videos.component';
 import { DocumentosComponent } from './paginas/documentos/documentos.component';
 import { CompanyComponent } from './paginas/company/company.component';
 import { CompanySecondComponent } from './paginas/company-second/company-second.component';
-import { EmpresaPerfilComponent } from './page/empresa-perfil/empresa-perfil.component';
+import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.component';
+import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
 
 const routes: Routes = [
 
@@ -66,7 +67,10 @@ const routes: Routes = [
     path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent
   },
   {
-    path: 'companies/:idEmpresa/pagaes/:idPagina', component: CompanySecondComponent
+    path: 'companies/:idEmpresa/paginas/:idPagina', component: CompanySecondComponent
+  },
+  {
+    path: 'cliente-perfil', component:  ClientePerfilComponent
   },
 
 
