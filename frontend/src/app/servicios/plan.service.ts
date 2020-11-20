@@ -23,6 +23,9 @@ export class PlanService {
   actualizarPlan(idPlan, plan) {
     return this.http.put(this.url + '/' + idPlan, plan);
   }
+  eliminarPlan(idPlan) {
+    return this.http.delete(this.url+'/'+idPlan);
+  }
 
 
 }

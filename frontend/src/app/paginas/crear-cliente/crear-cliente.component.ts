@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/servicios/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -8,24 +9,35 @@ import { ClienteService } from 'src/app/servicios/cliente.service';
 })
 export class CrearClienteComponent implements OnInit {
 
-cliente ={
-  nombre : '',
-  apellido :'',
-  correo : '',
-  contrasenia: ''
-}
+  cliente = {
+    nombre: '',
+    apellido: '',
+    sexo: '',
+    correo: '',
+    contrasenia: ''
+  }
 
-  constructor( private clienteService : ClienteService ) {
-   }
+  constructor(private clienteService: ClienteService , private route: Router) {
+  }
 
   ngOnInit(): void {
   }
-  crearCliente(){
+  crearCliente() {
+    this.clienteService.añadircliente(this.cliente).subscribe((res: any) => {
+      console.log(res);
 
-    this.clienteService.añadircliente(this.cliente).subscribe((data:any)=>{
-     console.log(data);
-    } );
-   // console.log(this.cliente);
+      if (res.respuesta) {
+       window.localStorage.setItem('cliente', res.dato._id);
+       this.route.navigate(['/cliente-perfil']);
+      }
+
+      
+    
+    });
+    
+
+
+
   }
 
 }

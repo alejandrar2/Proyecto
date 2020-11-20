@@ -23,7 +23,7 @@ export class Bloque1Component implements OnInit {
 
   public model = {
     //editorData: '<p>{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}</p>'
-    editorData: '<p>{"tipo":"enlace","id":"56bcvb5545shjh65","titulo":"Descargar archivo"}</p>'
+    editorData: '<p></p>'
 
   };
 

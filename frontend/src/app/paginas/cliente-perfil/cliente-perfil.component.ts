@@ -14,7 +14,7 @@ export class ClientePerfilComponent implements OnInit {
   imagenSubida: boolean;
   productos: any;
   cliente: any;
-  idCliente: any = '5fb5c4dc2a83060370c1d8a4';
+  idCliente: any = window.localStorage.getItem('cliente');
 
   constructor(private serviceEmpresa: EmpresasService, private serviceCliente: ClienteService) { }
 

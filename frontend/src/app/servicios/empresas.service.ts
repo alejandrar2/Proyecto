@@ -67,5 +67,8 @@ export class EmpresasService {
   actualizarPlan(idEmpresa, plan) {
     return this.http.put(this.url + '/actualizarPlan/' + idEmpresa , {plan});
   }
+  obtenerImagenUrl(idEmpresa , idImagen) {
+    return this.http.get(this.url + '/' + idEmpresa +'/obtenerImagen/' + idImagen );
+  }
 }
 

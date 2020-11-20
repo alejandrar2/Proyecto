@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 // Obtener uno
 router.get('/:id', (req, res) => {
 
-    Modelo.findOne( { _id: req.params.id }, {  })
+    Modelo.findOne({ _id: req.params.id }, {})
         .then(dato => {
             res.send(dato);
             res.end();
@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
     let nuevo = new Modelo({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
+        sexo: req.body.sexo,
         correo: req.body.correo,
         contrasenia: req.body.contrasenia,
         compras: []
@@ -74,13 +75,21 @@ router.delete('/:id', (req, res) => {
             res.end();
         });
 });
- // Login Cliente
+// Login Cliente
 router.post('/loginCliente', (req, res) => {
 
-    Modelo.find({correo: req.body.correo , contrasenia: req.body.contrasenia}, {nombre:true, apellido: true, correo: true, compras: true })
+    Modelo.findOne({ correo: req.body.correo, contrasenia: req.body.contrasenia }, { nombre: true, apellido: true, correo: true, compras: true })
         .then(datos => {
-            res.send({ respuesta: true, datos });
-            res.end();
+
+            if (datos) {
+                res.send(datos);
+                res.end();
+            } else {
+                res.send({ res: false });
+                res.end();
+            }
+
+
         })
         .catch(error => {
             res.send(error);
@@ -92,7 +101,7 @@ router.post('/loginCliente', (req, res) => {
 // Actualizar fotoPerfil
 router.put('/actualizarFotoPerfil/:idUsuario', (req, res) => {
 
-    Modelo.update({ _id: req.params.idUsuario}, {
+    Modelo.update({ _id: req.params.idUsuario }, {
         fotoPerfil: req.body.fotoPerfil
     })
         .then(datos => {
@@ -139,9 +148,9 @@ router.post('/guardarProducto/:idUsuario', (req, res) => {
 // Eliminar Producto
 router.delete('/eliminarProducto/:idUsuario/producto/:idProducto', (req, res) => {
 
-    Modelo.update({ _id: req.params.idUsuario}, {
+    Modelo.update({ _id: req.params.idUsuario }, {
 
-        $pull : { compras: { _id: mongoose.Types.ObjectId(req.params.idProducto)  }}
+        $pull: { compras: { _id: mongoose.Types.ObjectId(req.params.idProducto) } }
     })
         .then(datos => {
             res.send({ respuesta: true, datos });
@@ -157,7 +166,7 @@ router.delete('/eliminarProducto/:idUsuario/producto/:idProducto', (req, res) =>
 // Obtener productos de clientes
 router.get('/compras/:idUsuario', (req, res) => {
 
-    Modelo.findOne({ _id: req.params.idUsuario}, { compras: true })
+    Modelo.findOne({ _id: req.params.idUsuario }, { compras: true })
         .then(datos => {
             res.send(datos);
             res.end();

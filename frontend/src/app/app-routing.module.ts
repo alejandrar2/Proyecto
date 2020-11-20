@@ -20,6 +20,8 @@ import { CompanyComponent } from './paginas/company/company.component';
 import { CompanySecondComponent } from './paginas/company-second/company-second.component';
 import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.component';
 import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
+import { RolesComponent } from './paginas/roles/roles.component';
+import { PlanesComponent } from './paginas/planes/planes.component';
 
 const routes: Routes = [
 
@@ -78,7 +80,9 @@ const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'usuario', component: UsuariosComponent },
       { path: 'clientes', component: ClientesComponent },
-      { path: 'empresas', component: EmpresasComponent }
+      { path: 'empresas', component: EmpresasComponent },
+      { path: 'roles', component: RolesComponent },
+      { path: 'planes', component: PlanesComponent }
     ]
   }
 ];

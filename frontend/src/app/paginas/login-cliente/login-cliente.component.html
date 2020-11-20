@@ -6,16 +6,16 @@
   </div>
   <div style="padding-top: 10px;" class="col-4 md-2 ">
 
-    <div class="login-box">
+    <div  class="login-box">
       <img style="width: 296px; height: 231px; border-radius: 50px;" src="../../../assets/img/logo.png">
       <div class="textbox">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Username">
+        <input  [(ngModel)]="usuario.correo" type="text" placeholder="Username">
       </div>
 
       <div class="textbox">
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password">
+        <input [(ngModel)]="usuario.contrasenia" type="password" placeholder="Password">
       </div>
       <div style="color: #2ecece;" class="checkbox mb-3">
         <label>
@@ -23,8 +23,9 @@
         </label>
       </div>
 
-      <button style=" width: 60%; margin-left: 69px;" type="button" class="btn" >Iniciar</button>
-        <div style="border-color: red;" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <button  (click) = "login()" style=" width: 60%; margin-left: 69px;" type="button" class="btn" >Iniciar</button>
+      
+        <div *ngIf="respuesta" style="border-color: red;" class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>Correo o contraseña incorrecta</strong> <br> Vuelve a ingresar los datos
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

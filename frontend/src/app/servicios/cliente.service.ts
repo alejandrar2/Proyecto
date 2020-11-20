@@ -28,7 +28,7 @@ export class ClienteService {
   }
 
   loginCliente(cliente) {
-    return this.http.post(this.url + '/login', cliente);
+    return this.http.post(this.url + '/loginCliente', cliente);
   }
   añadirProductos(idUsuario, producto) {
     return this.http.post(this.url + '/guardarProducto/' + idUsuario, producto);

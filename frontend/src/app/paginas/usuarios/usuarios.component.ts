@@ -8,10 +8,18 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 })
 export class UsuariosComponent implements OnInit {
 
+  usuario = {
+    nombre : '',
+    apellido : '',
+    correo : '',
+    contrasenia : ''
+
+    }
+
   constructor( private servicioUsuario: UsuarioService ) { }
 
   usuarios:any;
-
+  
   ngOnInit(): void {
 
     this.obtenerUsuarios();
@@ -40,6 +48,14 @@ export class UsuariosComponent implements OnInit {
 
     } );
 
+  }
+
+  guardarUsuario() {
+    this.servicioUsuario.añadirUsuario(this.usuario).subscribe((data: any) => {
+      console.log(data);
+      this.obtenerUsuarios();
+      
+    });
   }
 
 

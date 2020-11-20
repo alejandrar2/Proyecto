@@ -20,7 +20,7 @@ export class ClientesComponent implements OnInit {
 
   obtenerCliente(){
 
-    this.serviceCliente.obtenerCliente().subscribe( ( res:any )=>{
+    this.serviceCliente.obtenerClientes().subscribe( ( res:any )=>{
       console.log(res);
       this.clientes = res.datos;
     });

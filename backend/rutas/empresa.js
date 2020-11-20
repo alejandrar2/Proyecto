@@ -134,9 +134,9 @@ router.post('/guardarPagina/:idEmpresa', (req, res) => {
                     titulo: req.body.titulo,
                     descripcion: req.body.descripcion,
                     palabrasClaves: req.body.palabrasClaves,
-                    navbar: req.body.navbar,
-                    footer: req.body.footer,
-                    paginaPrincipal: req.body.paginaPrincipal
+                    navbar: Boolean(req.body.navbar),
+                    footer: Boolean(req.body.footer),
+                    paginaPrincipal: Boolean(req.body.paginaPrincipal)
                 }
             }
         }
@@ -307,6 +307,22 @@ router.put('/actualizarPlan/:idEmpresa', (req, res) => {
             res.end();
         });
 });
+
+// Obtener URL Imagen
+router.get('/:idEmpresa/obtenerImagen/:idImagen', (req, res) => {
+
+    Modelo.findOne({ _id: req.params.idEmpresa, "imagenes._id" : mongoose.Types.ObjectId(req.params.idImagen) }, {"imagenes.$":true})
+        .then(datos => {
+            res.send(datos);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+
+});
+
 
 module.exports = router;
 

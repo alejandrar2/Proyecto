@@ -43,6 +43,8 @@ import { EditorComponent } from './componentes/editor/editor.component';
 import { ImagenComponent } from './componentes/imagen-plantilla/imagen.component';
 import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.component';
 import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
+import { RolesComponent } from './paginas/roles/roles.component';
+import { PlanesComponent } from './paginas/planes/planes.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.
     Bloque1Component,
     ImagenComponent,
     EmpresaPerfilComponent,
-    ClientePerfilComponent
+    ClientePerfilComponent,
+    RolesComponent,
+    PlanesComponent
   ],
   imports: [
     FormsModule,

@@ -6,7 +6,9 @@ var mongoose = require("mongoose");
 // Obtener
 router.get('/:idEmpresa/pagina/:idPagina', (req, res) => {
 
-    Modelo.findOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, {})
+    Modelo.findOne({ idEmpresa: mongoose.Types.ObjectId(req.params.idEmpresa), 
+                      idPagina: mongoose.Types.ObjectId(req.params.idPagina) 
+                   }, {})
         .then(datos => {
             res.send(datos);
             res.end();
@@ -20,7 +22,7 @@ router.get('/:idEmpresa/pagina/:idPagina', (req, res) => {
 // Actualizar bloque 1
 router.put('/:idEmpresa/pagina/bloque1/:idPagina', (req, res) => {
 
-    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque1: req.body.bloque  })
+    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque1: req.body.bloque })
         .then(datos => {
             res.send(datos);
             res.end();
@@ -34,7 +36,7 @@ router.put('/:idEmpresa/pagina/bloque1/:idPagina', (req, res) => {
 // Actualizar bloque 2
 router.put('/:idEmpresa/pagina/bloque2/:idPagina', (req, res) => {
 
-    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque2: req.body.bloque  })
+    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque2: req.body.bloque })
         .then(datos => {
             res.send(datos);
             res.end();
@@ -48,7 +50,7 @@ router.put('/:idEmpresa/pagina/bloque2/:idPagina', (req, res) => {
 // Actualizar bloque 3
 router.put('/:idEmpresa/pagina/bloque3/:idPagina', (req, res) => {
 
-    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque3: req.body.bloque  })
+    Modelo.updateOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, { bloque3: req.body.bloque })
         .then(datos => {
             res.send(datos);
             res.end();
