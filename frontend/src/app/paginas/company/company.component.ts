@@ -34,7 +34,7 @@ export class CompanyComponent implements OnInit {
   obtenerInformacionEmpresa() {
     this.servicio.obtenerEmpresa(this.idEmpresa).subscribe((data: any) => {
       this.empresa = data;
-      console.log('Empresa ', this.empresa);
+      //console.log('Empresa ', this.empresa);
     });
   }
 
@@ -50,7 +50,7 @@ export class CompanyComponent implements OnInit {
       for (let i = 0; i < data.paginas.length; i++) {
         if (data.paginas[i].paginaPrincipal) {
           this.index = data.paginas[i];
-          console.log('Index',this.index);
+          //console.log('Index',this.index);
         }        
       }
 

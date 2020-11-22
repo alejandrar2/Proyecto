@@ -14,7 +14,9 @@ export class CategoriaService {
   obtenerCategoria() {
     return this.http.get(this.url);
   }
-
+  obtenerCategoriaId(idcategoria) {
+    return this.http.get(this.url +'/'+ idcategoria);
+  }
   añadirCategoria(categoria){
     return this.http.post(this.url, categoria);
   }

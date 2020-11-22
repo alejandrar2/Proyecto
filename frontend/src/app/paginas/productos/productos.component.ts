@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 
@@ -24,7 +24,7 @@ export class ProductosComponent implements OnInit {
   categorias:any;
   mensaje: String;
   alert:any;
-
+  @Input() productosData : any;
   constructor(private serviceEmpresa: EmpresasService, private serviceCategoria: CategoriaService) { }
 
   ngOnInit(): void {

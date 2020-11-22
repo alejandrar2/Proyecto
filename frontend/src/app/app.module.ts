@@ -45,6 +45,7 @@ import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.
 import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
 import { RolesComponent } from './paginas/roles/roles.component';
 import { PlanesComponent } from './paginas/planes/planes.component';
+import { Bloque2Component } from './componentes/bloque2/bloque2.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { PlanesComponent } from './paginas/planes/planes.component';
     EmpresaPerfilComponent,
     ClientePerfilComponent,
     RolesComponent,
-    PlanesComponent
+    PlanesComponent,
+    Bloque2Component
   ],
   imports: [
     FormsModule,

@@ -1,24 +1,24 @@
-import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { ContenidoService } from 'src/app/servicios/contenido.service';
 
-
 @Component({
-  selector: 'app-bloque1',
-  templateUrl: './bloque1.component.html',
-  styleUrls: ['./bloque1.component.css']
+  selector: 'app-bloque2',
+  templateUrl: './bloque2.component.html',
+  styleUrls: ['./bloque2.component.css']
 })
-export class Bloque1Component implements OnInit {
+export class Bloque2Component implements OnInit {
+
 
   public Editor = ClassicEditor;
   editando: boolean = true;
   informacion: any[] = [];
   idEmpresa: string;
   idPagina: string;
-  imagen:any;
-  header:any;
+  productos:any;
+  galeria:any;
   carrousel:any;
 
   public model = {
@@ -27,9 +27,10 @@ export class Bloque1Component implements OnInit {
 
   };
 
-  constructor(private servicioContenido: ContenidoService, private activatedRoute: ActivatedRoute) { }
+  constructor(private servicioContenido: ContenidoService, private activatedRoute: ActivatedRoute , private servicioCategoria : CategoriaService) { }
 
   ngOnInit(): void {
+
     this.idEmpresa = this.activatedRoute.snapshot.paramMap.get('idEmpresa');
     this.idPagina = this.activatedRoute.snapshot.paramMap.get('idPagina');
 
@@ -42,8 +43,8 @@ export class Bloque1Component implements OnInit {
   }
 
   obtenerData() {
-    this.header = '';
-    this.imagen = '';
+    this.galeria = '';
+    this.productos = '';
     //console.log(this.model.editorData);
     let data: any = ' ';
     let datos: any = [];
@@ -60,14 +61,14 @@ export class Bloque1Component implements OnInit {
         //console.log( data[j], j)
       }
     }
-    //console.log(this.informacion);
+   // console.log('Info', this.informacion);
     this.procesarContenido();
   }
 
   obtenerContenido() {
     this.servicioContenido.obtenerContenido(this.idEmpresa, this.idPagina).subscribe((data: any)=> {
-     //console.log(data);
-      this.model.editorData = data.bloque1;
+     // console.log(data);
+      this.model.editorData = data.bloque2;
     });
   }
 
@@ -79,8 +80,8 @@ export class Bloque1Component implements OnInit {
       bloque: this.model.editorData
     }
 
-    this.servicioContenido.actualizarBloque1(this.idEmpresa, this.idPagina, bloque).subscribe( (data:any) => {
-     // console.log(data);
+    this.servicioContenido.actualizarBloque2(this.idEmpresa, this.idPagina, bloque).subscribe( (data:any) => {
+      //console.log(data);
       this.obtenerContenido();
       this.procesarContenido();
     });
@@ -89,18 +90,16 @@ export class Bloque1Component implements OnInit {
   procesarContenido(){
     for (let j = 0; j < this.informacion.length; j++) {
       
-      if (this.informacion[j].tipo == 'imagen') {
-        this.imagen = this.informacion[j];
+      if (this.informacion[j].tipo == 'productos') {
+        this.productos = this.informacion[j];
       }
 
-      if (this.informacion[j].tipo == 'header') {
-        this.header = this.informacion[j];
+      if (this.informacion[j].tipo == 'galeria') {
+        this.galeria = this.informacion[j];
       }
-      if (this.informacion[j].tipo == 'carrousel') {
-        this.carrousel = this.informacion[j];
-      }
+     
       
     }
   }
-
+  
 }

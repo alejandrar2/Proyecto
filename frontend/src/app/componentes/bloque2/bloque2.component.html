@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="btn-group" role="group" aria-label="Basic example" style="float: right !important;">
+        <button (click)="editando=true" type="button" class="btn btn-secondary">Editar</button>
+        <button (click)="obtenerData()" type="button" class="btn btn-secondary">Ver</button>
+        <button (click)="actualizarBloque()" type="button" class="btn btn-secondary">Guardar</button>
+    </div>
+</div>
+
+<br><br>
+
+<div class="container mb-2" *ngIf="!editando">
+
+    <app-productos-plantilla *ngIf="productos" [productos]="productos"></app-productos-plantilla>
+
+    <app-galeria-plantilla *ngIf="galeria" [galeria]="galeria"></app-galeria-plantilla>
+
+
+</div>
+
+
+<div *ngIf="editando" class="container mt-2 mb-2 p-2">
+    <ckeditor [editor]="Editor" [(ngModel)]="model.editorData"></ckeditor>
+</div>
