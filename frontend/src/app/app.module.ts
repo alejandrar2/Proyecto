@@ -46,6 +46,8 @@ import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.
 import { RolesComponent } from './paginas/roles/roles.component';
 import { PlanesComponent } from './paginas/planes/planes.component';
 import { Bloque2Component } from './componentes/bloque2/bloque2.component';
+import { LoginPlantillaComponent } from './componentes/login-plantilla/login-plantilla.component';
+import { DownloadComponent } from './componentes/download/download.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { Bloque2Component } from './componentes/bloque2/bloque2.component';
     ClientePerfilComponent,
     RolesComponent,
     PlanesComponent,
-    Bloque2Component
+    Bloque2Component,
+    LoginPlantillaComponent,
+    DownloadComponent
   ],
   imports: [
     FormsModule,

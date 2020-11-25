@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
@@ -20,6 +20,8 @@ export class Bloque2Component implements OnInit {
   productos:any;
   galeria:any;
   carrousel:any;
+  @Input() login: any;
+  @Input() download: any;
 
   public model = {
     //editorData: '<p>{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}</p>'
@@ -45,7 +47,7 @@ export class Bloque2Component implements OnInit {
   obtenerData() {
     this.galeria = '';
     this.productos = '';
-    //console.log(this.model.editorData);
+    console.log(this.model.editorData);
     let data: any = ' ';
     let datos: any = [];
     this.informacion = [];
@@ -61,7 +63,7 @@ export class Bloque2Component implements OnInit {
         //console.log( data[j], j)
       }
     }
-   // console.log('Info', this.informacion);
+   console.log('Info', this.informacion);
     this.procesarContenido();
   }
 
@@ -75,13 +77,16 @@ export class Bloque2Component implements OnInit {
   actualizarBloque(){
 
     this.editando=false;
+    
 
     let bloque = {
       bloque: this.model.editorData
+      
     }
+    console.log(this.model.editorData);
 
     this.servicioContenido.actualizarBloque2(this.idEmpresa, this.idPagina, bloque).subscribe( (data:any) => {
-      //console.log(data);
+      console.log(data);
       this.obtenerContenido();
       this.procesarContenido();
     });
@@ -97,8 +102,14 @@ export class Bloque2Component implements OnInit {
       if (this.informacion[j].tipo == 'galeria') {
         this.galeria = this.informacion[j];
       }
-     
+
+      if (this.informacion[j].tipo == 'login') {
+        this.login = this.informacion[j];
+      }
       
+      if (this.informacion[j].tipo == 'download') {
+        this.download = this.informacion[j];
+      }
     }
   }
   
