@@ -6,8 +6,21 @@ var mongoose = require("mongoose");
 // Obtener
 router.get('/:idEmpresa/pagina/:idPagina', (req, res) => {
 
-    Modelo.findOne({ idEmpresa: mongoose.Types.ObjectId(req.params.idEmpresa), 
-                      idPagina: mongoose.Types.ObjectId(req.params.idPagina) 
+    Modelo.findOne({ idEmpresa: req.params.idEmpresa, idPagina: req.params.idPagina }, {})
+        .then(datos => {
+            res.send(datos);
+            res.end();
+        })
+        .catch(error => {
+            res.send(error);
+            res.end();
+        });
+});
+
+// Obtener todos
+router.get('/', (req, res) => {
+
+    Modelo.find({ 
                    }, {})
         .then(datos => {
             res.send(datos);

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 
 @Component({
@@ -8,12 +9,24 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 })
 export class NavbarPlantillaComponent implements OnInit {
   @Input() empresa: any = '';
+  logo: any;
+  nombreEmpresa: any;
+  idEmpresa: any;
 
-  constructor( private servicio:EmpresasService ) { }
+  constructor( private serviceEmpresa :EmpresasService, private activeRoute : ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.idEmpresa = this.activeRoute.snapshot.paramMap.get('idEmpresa');
 
-    console.log('Sitio : ', this.empresa);
-
+    this.obtenerEmpresa();
+;
   }
+
+  obtenerEmpresa(){
+    this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res: any)=>{
+      this.logo= res.logotipo;
+      this.nombreEmpresa= res.nombre;
+    })
+  }
+
 }

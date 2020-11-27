@@ -69,13 +69,11 @@ const routes: Routes = [
     path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent
   },
   {
-    path: 'companies/:idEmpresa/paginas/:idPagina', component: CompanySecondComponent
+    path: 'companies/:idEmpresa/pages/:idPagina', component: CompanySecondComponent
   },
   {
     path: 'cliente-perfil', component:  ClientePerfilComponent
   },
-
-
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'usuario', component: UsuariosComponent },

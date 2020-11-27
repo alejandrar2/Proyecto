@@ -11,7 +11,7 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 export class GaleriaPlantillaComponent implements OnInit {
 
   @Input() galeria: any;
-  galeriaData: any = [];
+  galeriaData: any [] = [];
   idEmpresa: any;
 
 

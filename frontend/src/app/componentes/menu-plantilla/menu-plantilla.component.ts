@@ -14,6 +14,7 @@ export class MenuPlantillaComponent implements OnInit {
  empresa : any;
  paginas : any;
  idEmpresa : any;
+ nombreEmpresa:any;
 
   ngOnInit(): void {
 
@@ -25,9 +26,10 @@ export class MenuPlantillaComponent implements OnInit {
 
   obtenterInformacionEmpresa(){
     this.empresaService.obtenerEmpresa(this.idEmpresa).subscribe((res : any)=> {
-      console.log('PAginas', res.paginas);
+      //console.log('PAginas', res.paginas);
       this.paginas = res.paginas;
       this.empresa = res;
+      this.nombreEmpresa = res.nombre;
     });
   }
 

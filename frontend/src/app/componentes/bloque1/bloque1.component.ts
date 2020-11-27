@@ -66,8 +66,10 @@ export class Bloque1Component implements OnInit {
 
   obtenerContenido() {
     this.servicioContenido.obtenerContenido(this.idEmpresa, this.idPagina).subscribe((data: any)=> {
-     //console.log(data);
+     console.log(data);
+     if(data!=null){
       this.model.editorData = data.bloque1;
+     }
     });
   }
 
@@ -80,7 +82,7 @@ export class Bloque1Component implements OnInit {
     }
 
     this.servicioContenido.actualizarBloque1(this.idEmpresa, this.idPagina, bloque).subscribe( (data:any) => {
-     // console.log(data);
+      console.log(data);
       this.obtenerContenido();
       this.procesarContenido();
     });

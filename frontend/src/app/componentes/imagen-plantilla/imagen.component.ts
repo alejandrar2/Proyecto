@@ -22,7 +22,7 @@ export class ImagenComponent implements OnInit {
   }
   obtenerImagenUrl(){
     this.serviceEmpresa.obtenerImagenUrl(this.idEmpresa , this.imagen.id).subscribe((res:any)=>{
-      console.log(res);
+      //console.log(res);
       this.urlImagen = res.imagenes[0].urlImagen
     })
 
