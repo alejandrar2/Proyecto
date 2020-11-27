@@ -4,7 +4,7 @@
 
 <app-imagen-plantilla *ngIf="imagen" [imagen]="imagen"></app-imagen-plantilla>
 
-<app-menu-plantilla></app-menu-plantilla>
+<app-menu-plantilla (paginaSeleccionada)="paginaSeleccionada($event)"></app-menu-plantilla>
 
 <app-galeria-plantilla *ngIf="galeria" [galeria]="galeria"></app-galeria-plantilla>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,6 +15,8 @@ export class MenuPlantillaComponent implements OnInit {
  paginas : any;
  idEmpresa : any;
  nombreEmpresa:any;
+ paginaActiva: any;
+ @Output() paginaSeleccionada = new EventEmitter();
 
   ngOnInit(): void {
 
@@ -31,6 +33,11 @@ export class MenuPlantillaComponent implements OnInit {
       this.empresa = res;
       this.nombreEmpresa = res.nombre;
     });
+  }
+
+  actualizarPagina(idPagina){
+    this.paginaSeleccionada.emit(idPagina);
+
   }
 
 }
