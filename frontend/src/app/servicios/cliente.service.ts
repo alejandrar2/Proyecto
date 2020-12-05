@@ -9,7 +9,7 @@ export class ClienteService {
   constructor(private http: HttpClient) {
   }
 
-  url: string = 'http://localhost:8888/clientes';
+  url: string = 'https://morgan-web.herokuapp.com/clientes';
 
   obtenerClientes() {
     return this.http.get(this.url);

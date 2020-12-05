@@ -9,7 +9,7 @@ export class CategoriaService {
   constructor(private http: HttpClient) {
 
    }
-   url: string = 'http://localhost:8888/categoria';
+   url: string = 'https://morgan-web.herokuapp.com/categoria';
 
   obtenerCategoria() {
     return this.http.get(this.url);

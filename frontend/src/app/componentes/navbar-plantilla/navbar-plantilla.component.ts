@@ -24,6 +24,7 @@ export class NavbarPlantillaComponent implements OnInit {
 
   obtenerEmpresa(){
     this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res: any)=>{
+      console.log(res);
       this.logo= res.logotipo;
       this.nombreEmpresa= res.nombre;
     })

@@ -9,7 +9,7 @@ export class UsuarioService {
   constructor(private http: HttpClient) {
   }
 
-  url: string = 'http://localhost:8888/usuario';
+  url: string = 'https://morgan-web.herokuapp.com/usuario';
 
   obtenerUsuarios() {
     return this.http.get(this.url);

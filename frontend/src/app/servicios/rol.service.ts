@@ -9,7 +9,7 @@ export class RolService {
   constructor(private http: HttpClient) {
 
    }
-   url: string = 'http://localhost:8888/roles';
+   url: string = 'https://morgan-web.herokuapp.com/roles';
 
 
    obtenerRoles() {

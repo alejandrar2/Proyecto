@@ -9,7 +9,7 @@ export class PlanService {
   constructor(private http: HttpClient) {
   }
 
-  url: string = 'http://localhost:8888/planes';
+  url: string = 'https://morgan-web.herokuapp.com/planes';
 
   obtenerPlanes() {
     return this.http.get(this.url);

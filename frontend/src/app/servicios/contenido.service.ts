@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ContenidoService {
 
 
-  url: String = 'http://localhost:8888/contenido';
+  url: any = 'https://morgan-web.herokuapp.com/contenido';
 
   constructor(private http: HttpClient) {
   }
@@ -26,6 +26,9 @@ export class ContenidoService {
 
   actualizarBloque3(idEmpresa, idPagina, bloque) {
     return this.http.put(`${this.url}/${idEmpresa}/pagina/bloque3/${idPagina}`, bloque);
+  }
+  guardarContenido(contenido){
+    return this.http.post(this.url , contenido);
   }
 
 }

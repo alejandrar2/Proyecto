@@ -13,9 +13,9 @@ export class CompanySecondComponent implements OnInit {
   empresa: any;
   idEmpresa: any;
   idPagina: any;
-  contenidoBloque1: any;
-  contenidoBloque2: any;
-  contenidoBloque3: any;
+  contenidoBloque1: String;
+  contenidoBloque2: String;
+  contenidoBloque3: String;
   imagen: any;
   header: any;
   productos: any;
@@ -24,8 +24,11 @@ export class CompanySecondComponent implements OnInit {
   login: any;
   download: any;
   carrousel: any;
+  paginas: any;
+  nombreEmpresa: any;
   informacionBloque1: any[] = [];
   informacionBloque2: any[] = [];
+  existeGaleria: boolean = true;
 
   constructor(private ServiceEmpresa: EmpresasService, private activatedRoute: ActivatedRoute, private servicioContenido: ContenidoService) { }
 
@@ -44,24 +47,39 @@ export class CompanySecondComponent implements OnInit {
     this.ServiceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res: any) => {
       // console.log(res);
       this.empresa = res;
+      this.paginas = res.paginas;
+      this.nombreEmpresa = res.nombre;
     })
   }
 
   obtenerContenido() {
     this.servicioContenido.obtenerContenido(this.idEmpresa, this.idPagina).subscribe((res: any) => {
-      this.contenidoBloque1 = res.bloque1;
-      this.contenidoBloque2 = res.bloque2;
       //this.contenidoBloque3 = res.bloque3;
-      console.log(res);
-      if (this.contenidoBloque1 != '') {
-        this.obtenerDataBloque1();
+      console.log('CONTENIDO : ', res);
+      if (res != null) {
+        this.contenidoBloque1 = res.bloque1;
+        if (this.contenidoBloque1.length > 7) {
+          this.obtenerDataBloque1();
+        }
       }
 
-      if (this.contenidoBloque2 != '') {
-        this.obtenerDataBloque2();
+      if (res != null) {
+        this.contenidoBloque2 = res.bloque2;
+        if (this.contenidoBloque2.length > 7) {
+          this.obtenerDataBloque2();
+        }
       }
 
     })
+  }
+
+  limpiarBloques() {
+    this.galeria = '';
+    this.imagen = '';
+    this.header = '';
+    this.login = '';
+    this.productos = '';
+    this.existeGaleria = false;
   }
 
   // =====================================================================================
@@ -119,6 +137,9 @@ export class CompanySecondComponent implements OnInit {
     this.procesarContenidoBloque2();
   }
   procesarContenidoBloque2() {
+
+    this.existeGaleria = false;
+
     for (let j = 0; j < this.informacionBloque2.length; j++) {
 
       if (this.informacionBloque2[j].tipo == 'productos') {
@@ -127,6 +148,7 @@ export class CompanySecondComponent implements OnInit {
 
       if (this.informacionBloque2[j].tipo == 'galeria') {
         this.galeria = this.informacionBloque2[j];
+        this.existeGaleria = true;
       }
       if (this.informacionBloque2[j].tipo == 'login') {
         this.login = this.informacionBloque2[j];
@@ -137,7 +159,18 @@ export class CompanySecondComponent implements OnInit {
     }
   }
   paginaSeleccionada(id) {
-    console.log(id);
+    console.log('Pagina', id);
+    this.idPagina = id;
+    this.limpiarBloques();
+    this.obtenerContenido();
+  }
+
+  obtenterInformacionEmpresa() {
+    this.ServiceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res: any) => {
+      //console.log('PAginas', res.paginas);
+      this.paginas = res.paginas;
+
+    });
   }
 
 }

@@ -9,7 +9,7 @@ export class EmpresasService {
   constructor(private http: HttpClient) {
 
   }
-  url: string = 'http://localhost:8888/empresa';
+  url: string = 'https://morgan-web.herokuapp.com/empresa';
 
   obtenerEmpresas() {
     return this.http.get(this.url);

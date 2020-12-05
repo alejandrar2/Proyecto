@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -101,6 +102,7 @@ import { DownloadComponent } from './componentes/download/download.component';
     AppRoutingModule,
     HttpClientModule,
     CKEditorModule,
+    RouterModule
 
   ],
   providers: [UsuarioService],

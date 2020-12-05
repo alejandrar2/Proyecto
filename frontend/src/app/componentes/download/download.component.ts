@@ -11,19 +11,21 @@ export class DownloadComponent implements OnInit {
 
   idEmpresa: string;
   imagen: any;
-@Input() download: any;
-  constructor(private EmpresaService: EmpresasService ,private activatedRoute: ActivatedRoute) { }
+  urlImagen:any;
+  @Input() download: any;
+  constructor(private EmpresaService: EmpresasService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.idEmpresa = this.activatedRoute.snapshot.paramMap.get('idEmpresa');
 
     this.obtenerImagen();
   }
-obtenerImagen(){
-  this.EmpresaService.obtenerImagenUrl(this.idEmpresa, this.download.id).subscribe((res:any)=>{
-    this.imagen = res.imagenes[0];
-    console.log(res.imagenes[0]);
-  })
-}
+  obtenerImagen() {
+    this.EmpresaService.obtenerImagenUrl(this.idEmpresa, this.download.id).subscribe((res: any) => {
+      this.imagen = res.imagenes[0];
+      this.urlImagen = res.imagenes[0].urlImagen;
+      console.log(res.imagenes[0]);
+    })
+  }
 
 }

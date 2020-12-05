@@ -70,7 +70,9 @@ export class Bloque2Component implements OnInit {
   obtenerContenido() {
     this.servicioContenido.obtenerContenido(this.idEmpresa, this.idPagina).subscribe((data: any)=> {
      // console.log(data);
-      this.model.editorData = data.bloque2;
+      if(data!=null){
+        this.model.editorData = data.bloque2;
+       }
     });
   }
 
@@ -112,5 +114,18 @@ export class Bloque2Component implements OnInit {
       }
     }
   }
-  
+
+  guardarBloque2(){
+    let contenido = {
+      bloque1: '<p></p>',
+      bloque2: this.model.editorData,
+      bloque3: '<p></p>',
+      idPagina: this.idPagina,
+      idEmpresa: this.idEmpresa
+    }
+
+    this.servicioContenido.guardarContenido(contenido).subscribe((res: any)=>{
+      console.log(res);
+    })
+  }
 }

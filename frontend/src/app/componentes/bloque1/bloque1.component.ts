@@ -20,6 +20,7 @@ export class Bloque1Component implements OnInit {
   imagen:any;
   header:any;
   carrousel:any;
+  
 
   public model = {
     //editorData: '<p>{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}</p>'
@@ -66,7 +67,7 @@ export class Bloque1Component implements OnInit {
 
   obtenerContenido() {
     this.servicioContenido.obtenerContenido(this.idEmpresa, this.idPagina).subscribe((data: any)=> {
-     console.log(data);
+     console.log('CONTENIDO', data);
      if(data!=null){
       this.model.editorData = data.bloque1;
      }
@@ -103,6 +104,20 @@ export class Bloque1Component implements OnInit {
       }
       
     }
+  }
+  guardarBloque(){
+
+    let contenido = {
+      bloque1: this.model.editorData,
+      bloque2: '<p></p>',
+      bloque3: '<p></p>',
+      idPagina: this.idPagina,
+      idEmpresa: this.idEmpresa
+    }
+
+    this.servicioContenido.guardarContenido(contenido).subscribe((res: any)=>{
+      console.log(res);
+    })
   }
 
 }

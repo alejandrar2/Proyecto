@@ -40,40 +40,21 @@ const routes: Routes = [
   {
     path: 'login-cliente', component: LoginClienteComponent
   },
-  {
-    path: 'admin-company', component: PerfilEmpresaComponent, children: [
-      {
-        path: 'productos', component: ProductosComponent
-      },
-      {
-        path: 'sitios', component: SitiiosComponent
-      },
-      {
-        path: 'categoria', component: CategoriaComponent
-      },
-      {
-        path: 'galeria', component: GaleriaComponent
-      },
-       {
-        path: 'videos', component: VideosComponent
-      }, 
-      {
-        path: 'documentos', component: DocumentosComponent
-      },
-      {
-        path: 'perfil', component: EmpresaPerfilComponent
-      },
+  { path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent },
+  { path: 'companies/:idEmpresa/pages/:idPagina', component: CompanySecondComponent },
+  { path: 'cliente-perfil', component: ClientePerfilComponent },
+
+  { path: 'empresa', component: PerfilEmpresaComponent, children: [
+      { path: 'productos', component: ProductosComponent },
+      { path: 'sitios', component: SitiiosComponent },
+      { path: 'categoria', component: CategoriaComponent },
+      { path: 'galeria', component: GaleriaComponent },
+      { path: 'videos', component: VideosComponent },
+      { path: 'documentos', component: DocumentosComponent },
+      { path: 'perfil', component: EmpresaPerfilComponent }
     ]
   },
-  {
-    path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent
-  },
-  {
-    path: 'companies/:idEmpresa/pages/:idPagina', component: CompanySecondComponent
-  },
-  {
-    path: 'cliente-perfil', component:  ClientePerfilComponent
-  },
+
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'usuario', component: UsuariosComponent },
@@ -87,7 +68,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
