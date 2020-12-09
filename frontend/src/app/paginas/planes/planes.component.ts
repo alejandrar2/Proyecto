@@ -16,6 +16,8 @@ plan = {
 
 }; 
 planes: any;
+mensaje : any;
+alert: any;
 
   constructor( private planService : PlanService) { }
 
@@ -26,6 +28,10 @@ planes: any;
 
   guardarPlan(){
     this.planService.guardarPlan(this.plan).subscribe((res:any)=>{
+      this.mensaje = 'Plan agregado con exito ';
+      this.alert = 'success';
+      this.planes = res.datos;
+      this.obtenerPlanes();
       console.log(res);
     });
     
@@ -39,10 +45,9 @@ planes: any;
   }
 
   eliminarPlan(idPlan){
-    console.log(idPlan);
-
     this.planService.eliminarPlan(idPlan).subscribe( (res:any) => {
-
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
       console.log(res);
 
       if(res.Ok){

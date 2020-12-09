@@ -1,13 +1,16 @@
 <div class="container">
     <div class="btn-group" role="group" aria-label="Basic example" style="float: right !important;">
-        <button (click)="editando=true" type="button" class="btn btn-secondary">Editar</button>
-        <button (click)="obtenerData()" type="button" class="btn btn-secondary">Ver</button>
-        <button (click)="actualizarBloque()" type="button" class="btn btn-secondary">Actualizar</button>
-        <button (click)="guardarBloque2()" type="button" class="btn btn-secondary">Guardar</button>
+        <button style="background-color: #4db6ac;" (click)="editando=true" type="button" class="btn btn-secondary">Editar</button>
+        <button style="background-color: #4db6ac;" (click)="obtenerData()" type="button" class="btn btn-secondary">Ver</button>
+        <button style="background-color: #4db6ac;" (click)="actualizarBloque()" type="button" class="btn btn-secondary">Actualizar</button>
+        <button style="background-color: #4db6ac;" (click)="guardarBloque2()" type="button" class="btn btn-secondary">Guardar</button>
     </div>
 </div>
 
 <br><br>
+<div class="text-center">
+    <h6>Ingrese el Shorcut</h6>
+</div>
 
 <div class="container mb-2" *ngIf="!editando">
 

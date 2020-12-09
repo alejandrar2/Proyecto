@@ -7,7 +7,7 @@ var esquema = new Modelo({
     sexo: { type: String },
     correo: { type: String },
     contrasenia: { type: String },
-    fotoPerfil: { type: String ,  default: 'https://www.optimaley.com/wp-content/uploads/2014/09/foto-perfil-generica.jpg'},
+    fotoPerfil: { type: String , default:'https://www.optimaley.com/wp-content/uploads/2014/09/foto-perfil-generica.jpg'},
     compras: { type: Array }
 
 });

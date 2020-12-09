@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a  style="padding-right: 43px;" class="navbar-brand m-2" href="#">Morgan's Web</a>
+<nav style=" background-color: #2ECECE !important;" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a style="padding-right: 43px; color: aliceblue;" class="navbar-brand m-2" href="#">Morgan's Web</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,14 +7,14 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
 
-            <li  style=" padding-top: 5px;" class="nav-item">
-                <i class="fas fa-shopping-cart mr-sm-2 pt-2"> Cesta</i>
+            <li style=" padding-top: 5px;" class="nav-item">
+                <i style="color: dimgray;" class="fas fa-shopping-cart mr-sm-2 pt-2"> Cesta</i>
             </li>
             <li class="nav-item">
-                
+
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                <a style="color: dimgray;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Productos
                 </a>
@@ -24,28 +24,34 @@
                     <a class="dropdown-item" href="#">Lista de deseos</a>
                 </div>
             </li>
+            <li>
+                <div>
+                    <a style="margin-left: 861px; margin-top: 9px; background-color: gray; color: honeydew;" class="btn btn-sm btn-outline-secondary" href="#">Cerrar Sesion</a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
 <div class="container">
     <div class="row">
         <div style="margin-left: -75px;" class="col-2 p-0">
-            <img  class="img-fluid rounded-circle" style=" padding-bottom: 10px; width: 166px; height: 176px;" src="{{ cliente.fotoPerfil }}">
+            <img class="img-fluid rounded-circle" style=" padding-bottom: 10px; width: 166px; height: 176px;"
+                src="{{fotoPerfil}}">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <button data-toggle="modal" data-target="#botonSubirFoto" class="btn btn-sm btn-secondary"
                     type="button">Cambiar foto de perfil</button>
             </div>
         </div>
-        <div class="col-4" >
-            <p>Nombre : <span>{{ cliente.nombre }}</span> </p>
-            <p>Direccion de email : <span>{{cliente.correo}}</span></p>
-            <p>Sexo : <span>{{cliente.sexo}}</span> </p>
+        <div class="col-4">
+            <p>Nombre : <span>{{nombre}}</span> </p>
+            <p>Direccion de email : <span>{{correo}}</span></p>
+            <p>Sexo : <span>{{sexo}}</span> </p>
         </div>
 
-        
+
         <div class="col-6">
             <h4>Productos</h4>
-            <table class="table" >
+            <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Foto</th>
@@ -58,12 +64,12 @@
                 <tbody>
                     <tr *ngFor=" let item of productos">
 
-                        <th scope="row"> 
-                        <img width="60px" height="50px" src="{{item.urlImagen}}" alt=""> </th>
+                        <th scope="row">
+                            <img width="60px" height="50px" src="{{item.urlImagen}}" alt=""> </th>
                         <td>{{item.nombre}}</td>
                         <td>{{item.calificacion}}</td>
                         <td>{{item.precio}}</td>
-                        <td> <button  class="btn btn-danger btn-sm">Eliminar</button> </td>
+                        <td> <button class="btn btn-danger btn-sm">Eliminar</button> </td>
                     </tr>
                 </tbody>
             </table>

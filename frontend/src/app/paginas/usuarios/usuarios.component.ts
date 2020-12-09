@@ -19,6 +19,8 @@ export class UsuariosComponent implements OnInit {
   constructor( private servicioUsuario: UsuarioService ) { }
 
   usuarios:any;
+  mensaje: any;
+  alert:any;
   
   ngOnInit(): void {
 
@@ -39,7 +41,8 @@ export class UsuariosComponent implements OnInit {
     console.log(idUsuario);
 
     this.servicioUsuario.eliminarUsuario(idUsuario).subscribe( (res:any) => {
-
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
       console.log(res);
 
       if(res.Ok){
@@ -54,6 +57,8 @@ export class UsuariosComponent implements OnInit {
     this.servicioUsuario.añadirUsuario(this.usuario).subscribe((data: any) => {
       console.log(data);
       this.obtenerUsuarios();
+      this.mensaje = 'Usuario agregado con exito ';
+      this.alert = 'success';
       
     });
   }

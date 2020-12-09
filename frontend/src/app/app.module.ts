@@ -49,6 +49,7 @@ import { PlanesComponent } from './paginas/planes/planes.component';
 import { Bloque2Component } from './componentes/bloque2/bloque2.component';
 import { LoginPlantillaComponent } from './componentes/login-plantilla/login-plantilla.component';
 import { DownloadComponent } from './componentes/download/download.component';
+import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { DownloadComponent } from './componentes/download/download.component';
     PlanesComponent,
     Bloque2Component,
     LoginPlantillaComponent,
-    DownloadComponent
+    DownloadComponent,
+    LoginAdministradorComponent
   ],
   imports: [
     FormsModule,

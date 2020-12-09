@@ -9,6 +9,7 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 export class GaleriaComponent implements OnInit {
 
   empresa:any;
+  idEmpresa:any;
   imagenes:any;
   imagenNueva:any;
   mensaje:any;
@@ -17,7 +18,7 @@ export class GaleriaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.empresa = JSON.parse( window.localStorage.getItem('Empresa') );
+    this.idEmpresa = JSON.parse(window.localStorage.getItem('empresa'));
 
     this.obtenerImagenes();
 
@@ -25,7 +26,7 @@ export class GaleriaComponent implements OnInit {
   }
 
   obtenerImagenes(){
-    this.serviceEmpresa.obtenerImagenes(this.empresa._id).subscribe( (data:any) => {
+    this.serviceEmpresa.obtenerImagenes(this.idEmpresa).subscribe( (data:any) => {
       this.imagenes = data[0].imagenes;
       console.log(this.imagenes);
     } );
@@ -55,7 +56,7 @@ export class GaleriaComponent implements OnInit {
     }
 
 
-    this.serviceEmpresa.guardarImagenNode(imagen, this.empresa._id).subscribe((data: any) => {
+    this.serviceEmpresa.guardarImagenNode(imagen, this.idEmpresa).subscribe((data: any) => {
       if (data) {
         console.log(data);
         this.mensaje = 'Imagen guardada con exito';
@@ -65,7 +66,7 @@ export class GaleriaComponent implements OnInit {
   }
 
 eliminarImagen(id){
-  this.serviceEmpresa.eliminarImagen(this.empresa._id, id).subscribe((data: any) => {
+  this.serviceEmpresa.eliminarImagen(this.idEmpresa, id).subscribe((data: any) => {
     console.log('data',  data);
 
     if (data) {

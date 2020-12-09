@@ -21,7 +21,7 @@ export class LoginClienteComponent implements OnInit {
    this.seviceCliente.loginCliente(this.usuario).subscribe(( res:any) => {
     console.log(res)
     if (res._id) {
-     window.localStorage.setItem('cliente' , res._id );
+     window.localStorage.setItem('cliente' , JSON.stringify(res._id ));
      this.route.navigate(['/cliente-perfil']);
     }
     else{

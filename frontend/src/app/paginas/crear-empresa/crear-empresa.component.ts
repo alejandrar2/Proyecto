@@ -31,7 +31,7 @@ export class CrearEmpresaComponent implements OnInit {
       console.log(data);
 
       window.localStorage.setItem('empresa',JSON.stringify(data.dato));
-      this.routing.navigate(['/admin-company/productos'])
+      this.routing.navigate(['/empresa/productos'])
     });
   }
 

@@ -14,7 +14,8 @@ export class RolesComponent implements OnInit {
    nombre : '',
    descripcion :''
  };
- 
+ mensaje : any;
+ alert: any;
  roles: any;
   ngOnInit(): void {
 
@@ -22,6 +23,8 @@ export class RolesComponent implements OnInit {
   }
   guardarRol(){
     this.servicioRol.guardarRol(this.rol).subscribe((res: any) =>{
+      this.mensaje = 'Rol agregado con exito ';
+      this.alert = 'success';
       console.log(res);
     });
   }
@@ -38,7 +41,8 @@ export class RolesComponent implements OnInit {
     console.log(idRol);
 
     this.servicioRol.eliminarRol(idRol).subscribe( (res:any) => {
-
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
       console.log(res);
 
       if(res.Ok){

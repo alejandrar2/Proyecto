@@ -22,6 +22,7 @@ import { EmpresaPerfilComponent } from './paginas/empresa-perfil/empresa-perfil.
 import { ClientePerfilComponent } from './paginas/cliente-perfil/cliente-perfil.component';
 import { RolesComponent } from './paginas/roles/roles.component';
 import { PlanesComponent } from './paginas/planes/planes.component';
+import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 
 const routes: Routes = [
 
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'login-cliente', component: LoginClienteComponent
   },
+  {
+    path: 'login-administrador', component: LoginAdministradorComponent
+  },
+  
   { path: 'admin-companies/:idEmpresa/pages/:idPagina', component: CompanyComponent },
   { path: 'companies/:idEmpresa/pages/:idPagina', component: CompanySecondComponent },
   { path: 'cliente-perfil', component: ClientePerfilComponent },

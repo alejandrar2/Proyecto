@@ -77,4 +77,21 @@ router.put('/:idPlan', (req, res) => {
         });
 
 });
+
+//Eliminar Plan
+router.delete('/:id', (req, res) => {
+
+    Modelo.remove({ _id: req.params.id }).
+        then((data) => {
+            res.json({
+                Ok: true
+            });
+            res.end();
+        }).catch((erro) => {
+            res.json({
+                Ok: false
+            });
+            res.end();
+        });
+});
 module.exports = router;

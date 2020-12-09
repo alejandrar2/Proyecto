@@ -14,7 +14,7 @@ export class LoginEmpresaComponent implements OnInit {
     correo: '',
     contrasenia: ''
   }
-
+respuesta:boolean;
   constructor(private serviceEmpresa : EmpresasService, private route: Router ) { }
 
   ngOnInit(): void {
@@ -26,9 +26,12 @@ export class LoginEmpresaComponent implements OnInit {
       console.log(data)
 
       if( data.datos.length > 0 ){
-        window.localStorage.setItem('Empresa', JSON.stringify(data.datos[0]));
+        window.localStorage.setItem('empresa', JSON.stringify(data.datos[0]._id ));
 
-        this.route.navigate(['/admin-company/perfil'])
+        this.route.navigate(['/empresa/perfil'])
+      }
+      else{
+        this.respuesta= true
       }
 
     })

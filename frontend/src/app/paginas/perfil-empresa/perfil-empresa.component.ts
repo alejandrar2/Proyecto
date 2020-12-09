@@ -12,14 +12,22 @@ export class PerfilEmpresaComponent implements OnInit {
     urlImagen: ''
   }
 
+  idEmpresa: any;
   empresa: any;
 
   constructor(private serviceEmpresa: EmpresasService) { }
 
   ngOnInit(): void {
 
-    this.empresa = JSON.parse(window.localStorage.getItem('Empresa'))
+    this.idEmpresa = JSON.parse(window.localStorage.getItem('empresa'));
+    this.obtenerEmpresa();
+  }
 
+  obtenerEmpresa(){
+    this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res:any)=>{
+      this.empresa= res;
+      //console.log(res.datos[0]);
+    })
   }
 
 }

@@ -8,7 +8,7 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 })
 export class SitiiosComponent implements OnInit {
 
-  empresa = JSON.parse(window.localStorage.getItem('Empresa'));
+  idEmpresa = JSON.parse(window.localStorage.getItem('empresa'));
   imagen: any;
   imagenSubida: boolean = false;
   sitios: any;
@@ -23,12 +23,14 @@ export class SitiiosComponent implements OnInit {
   }
 
   mensaje: String;
+  empresa: any;
   alert:any;
   constructor(private serviceEmpresa: EmpresasService) { }
 
   ngOnInit(): void {
 
     this.obtenerSitios();
+    this.obtenerEmpresa();
 
   }
   subirImagen(e) {
@@ -47,11 +49,16 @@ export class SitiiosComponent implements OnInit {
       }
     });
   }
+  obtenerEmpresa(){
+    this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res:any)=>{
+      this.empresa = res;
+    })
+  }
 
   guardarSitio() {
     //console.log(this.sitio)
     
-    this.serviceEmpresa.guardarSitio(this.sitio, this.empresa._id).subscribe((data: any) => {
+    this.serviceEmpresa.guardarSitio(this.sitio, this.idEmpresa).subscribe((data: any) => {
       console.log(data);
       this.obtenerSitios();
       this.mensaje = 'Pagina agregado con exito ';
@@ -60,7 +67,7 @@ export class SitiiosComponent implements OnInit {
   
   }
   obtenerSitios() {
-    this.serviceEmpresa.obtenerSitios(this.empresa._id).subscribe((data: any) => {
+    this.serviceEmpresa.obtenerSitios(this.idEmpresa).subscribe((data: any) => {
       console.log(data);
       this.sitios = data.paginas;
       this.limpiarCampos();
@@ -81,7 +88,7 @@ export class SitiiosComponent implements OnInit {
   eliminarSitio(id) {
     //console.log(id);
     this.mensaje = '';
-    this.serviceEmpresa.eliminarSitio(this.empresa._id, id).subscribe((data: any) => {
+    this.serviceEmpresa.eliminarSitio(this.idEmpresa, id).subscribe((data: any) => {
       console.log(data);
 
       this.obtenerSitios();

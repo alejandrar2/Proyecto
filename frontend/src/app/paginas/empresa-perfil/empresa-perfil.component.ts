@@ -13,9 +13,21 @@ export class EmpresaPerfilComponent implements OnInit {
     urlImagen: ''
   }
 
+  empresa = {
+    nombre: '',
+    descripcion: '',
+    correo:'',
+    rubro: '',
+    plan:'',
+    paginas: [],
+    productos: [],
+    imagenes: []
+  }
+  
+
   imagenNueva: String = 'Seleccionar plan';
   planes: any;
-  empresa: any;
+  //empresa: any;
   planSeleccionado: any = {
     nombre: '',
     precio: '',
@@ -24,26 +36,41 @@ export class EmpresaPerfilComponent implements OnInit {
   };
 
   informacionEmpresa: any;
+  logotipo: any;
+  idEmpresa:any;
   imagenSubida: boolean = false;
   constructor(private serviceEmpresa: EmpresasService, private servicePlan: PlanService) { }
 
   ngOnInit(): void {
-    this.informacionEmpresa = JSON.parse(window.localStorage.getItem('Empresa'));
-    this.actualizarInformacionEmpresa()
+    this.idEmpresa = JSON.parse(window.localStorage.getItem('empresa'));
+    this.actualizarInformacionEmpresa();
+    this.obtenerEmpresa();
 
 
     this.ObtnerPlanes();
   }
+
+  obtenerEmpresa(){
+    this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((res:any)=>{
+      this.empresa.nombre = res.nombre;
+      this.empresa.descripcion = res.descripcion;
+      this.empresa.correo = res.correo;
+      this.empresa.rubro = res.rubro;
+      this.empresa.plan = res.plan;
+      this.logotipo = res.logotipo;
+    })
+  }
+  
   subirImagen(e) {
     let imagen = e.target.files[0];
-    console.log('Imagen ', imagen);
+    //console.log('Imagen ', imagen);
     const data = new FormData();
     data.append('file', imagen);
     data.append('upload_preset', 'morgan');
     this.serviceEmpresa.guardarImagen(data).subscribe((res: any) => {
 
       if (res) {
-        console.log(res.url)
+        //console.log(res.url)
         this.imagenNueva = res.url;
         this.subirImagenNode();
       }
@@ -51,19 +78,18 @@ export class EmpresaPerfilComponent implements OnInit {
   }
 
   actualizarInformacionEmpresa() {
-    this.serviceEmpresa.obtenerEmpresa(this.informacionEmpresa._id).subscribe((data: any) => {
+    this.serviceEmpresa.obtenerEmpresa(this.idEmpresa).subscribe((data: any) => {
       if (data) {
-        console.log(data);
+        //console.log(data);
         this.empresa = data;
-        window.localStorage.setItem('Empresa', JSON.stringify(data));
       }
     });
   }
 
   subirImagenNode() {
-    this.serviceEmpresa.actualizarLogotipo(this.informacionEmpresa._id, this.imagenNueva).subscribe((data: any) => {
+    this.serviceEmpresa.actualizarLogotipo(this.idEmpresa, this.imagenNueva).subscribe((data: any) => {
       if (data) {
-        console.log(data);
+        //console.log(data);
         this.actualizarInformacionEmpresa();
       }
     });
@@ -72,7 +98,7 @@ export class EmpresaPerfilComponent implements OnInit {
   ObtnerPlanes() {
     this.servicePlan.obtenerPlanes().subscribe((data: any) => {
       if (data) {
-        console.log(data);
+        //console.log(data);
         this.planes = data;
       }
     });
@@ -96,7 +122,7 @@ export class EmpresaPerfilComponent implements OnInit {
 
   actualizarPlan() {
 
-    this.serviceEmpresa.actualizarPlan(this.empresa._id, this.planSeleccionado.nombre).subscribe((data: any) => {
+    this.serviceEmpresa.actualizarPlan(this.idEmpresa, this.planSeleccionado.nombre).subscribe((data: any) => {
       //console.log(data);
       this.actualizarInformacionEmpresa();
 

@@ -4,6 +4,12 @@
     data-target="#exampleModal">
     Nuevo Plan
 </button>
+<div *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -22,7 +28,7 @@
             <td>{{ user.cantidadPaginas }}</td>
             <td>{{ user.cantidadProductos }}</td>
             <td>{{ user.precio }}</td>
-            <td> <button class="btn btn-sm btn-danger" > Eliminar </button> </td>
+            <td> <button class="btn btn-sm btn-danger" (click)="eliminarPlan(user._id)" > Eliminar </button> </td>
         </tr>
     </tbody>
 </table>
