@@ -20,6 +20,9 @@ export class Bloque1Component implements OnInit {
   imagen:any;
   header:any;
   carrousel:any;
+  mensaje: any;
+  mensaje2: any;
+  alert: any;
   
 
   public model = {
@@ -86,6 +89,8 @@ export class Bloque1Component implements OnInit {
       console.log(data);
       this.obtenerContenido();
       this.procesarContenido();
+      this.mensaje = 'Actualizado con exito ';
+      this.alert = 'success';
     });
   }
 
@@ -117,6 +122,8 @@ export class Bloque1Component implements OnInit {
 
     this.servicioContenido.guardarContenido(contenido).subscribe((res: any)=>{
       console.log(res);
+      this.mensaje2 = 'Guardado con exito ';
+      this.alert = 'success';
     })
   }
 

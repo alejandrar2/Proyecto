@@ -33,8 +33,9 @@ export class ClienteService {
   añadirProductos(idUsuario, producto) {
     return this.http.post(this.url + '/guardarProducto/' + idUsuario, producto);
   }
-  eliminarProducto(idProducto, idUsuario) {
-    return this.http.delete(this.url + '/eliminarProducto/' + idUsuario + '/producto/' + idProducto);
+  eliminarProducto(idProducto, idCliente) {
+    return this.http.delete(this.url + '/eliminarProducto/' + idCliente + '/producto/' + idProducto);
+   
   }
   obtenerProductosCliente(idUsuario) {
     return this.http.get(this.url + '/compras/' + idUsuario);

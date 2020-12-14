@@ -22,6 +22,9 @@ export class Bloque2Component implements OnInit {
   carrousel:any;
   @Input() login: any;
   @Input() download: any;
+  mensaje: any;
+  mensaje2:any;
+  alert: any;
 
   public model = {
     //editorData: '<p>{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}</p>'
@@ -89,8 +92,11 @@ export class Bloque2Component implements OnInit {
 
     this.servicioContenido.actualizarBloque2(this.idEmpresa, this.idPagina, bloque).subscribe( (data:any) => {
       console.log(data);
+      this.mensaje2 = 'Actualizado con exito ';
+      this.alert = 'success';
       this.obtenerContenido();
       this.procesarContenido();
+      
     });
   }
 
@@ -126,6 +132,8 @@ export class Bloque2Component implements OnInit {
 
     this.servicioContenido.guardarContenido(contenido).subscribe((res: any)=>{
       console.log(res);
+      this.mensaje2 = 'Guardado con exito ';
+      this.alert = 'success';
     })
   }
 }

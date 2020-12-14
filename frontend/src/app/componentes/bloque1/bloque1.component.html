@@ -27,14 +27,14 @@
 </div>
 
 
-<div style="height: 58px;width: 500px; margin-left: 737px;" class="alert alert-success alert-dismissible fade show text-center" role="alert">
-    <strong>Actualizacion exitosa</strong>
+<div style="margin-left: 900px; margin-right: 100px;" *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div style="height: 58px;width: 500px; margin-left: 737px;" class="alert alert-success alert-dismissible fade show text-center" role="alert">
-    <strong>Se ha guardado correctamente</strong>
+<div style="margin-left: 900px; margin-right: 100px;" *ngIf="mensaje2"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje2 }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>

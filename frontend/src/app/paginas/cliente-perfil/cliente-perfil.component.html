@@ -14,8 +14,8 @@
 
             </li>
             <li class="nav-item dropdown">
-                <a style="color: dimgray;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a style="color: dimgray;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Productos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -26,7 +26,8 @@
             </li>
             <li>
                 <div>
-                    <a style="margin-left: 861px; margin-top: 9px; background-color: gray; color: honeydew;" class="btn btn-sm btn-outline-secondary" href="#">Cerrar Sesion</a>
+                    <a style="margin-left: 861px; margin-top: 9px; background-color: gray; color: honeydew;"
+                        class="btn btn-sm btn-outline-secondary" href="#">Cerrar Sesion</a>
                 </div>
             </li>
         </ul>
@@ -50,7 +51,7 @@
 
 
         <div class="col-6">
-            <h4>Productos</h4>
+            <h4>Carrito de Productos</h4>
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -69,7 +70,9 @@
                         <td>{{item.nombre}}</td>
                         <td>{{item.calificacion}}</td>
                         <td>{{item.precio}}</td>
-                        <td> <button class="btn btn-danger btn-sm">Eliminar</button> </td>
+                        <td> 
+                            <button (click)="eliminarProducto(item._id)" class="btn btn-danger btn-sm">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
